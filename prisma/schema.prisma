@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("admin")
+  published    Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model SiteSettings {
+  id               String   @id @default(cuid())
+  brandName        String
+  shortName        String
+  tagline          String
+  subTagline       String
+  logoUrl          String
+  street           String
+  district         String
+  city             String
+  fullAddress      String
+  mapsQueryUrl     String
+  mapsEmbedUrl     String
+  phone            String
+  email            String
+  eventsEmail      String
+  instagramUrl     String
+  facebookUrl      String
+  tripadvisorUrl   String
+  roasteryHours    String
+  grillHours       String
+  openingHoursJson Json
+  published        Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model HeroContent {
+  id                    String   @id @default(cuid())
+  badgeText             String
+  scriptAccent          String
+  headline              String
+  subheadline           String
+  primaryCtaLabel       String
+  primaryCtaHref        String
+  secondaryCtaLabel     String
+  secondaryCtaHref      String
+  heroImageUrl          String
+  floatingCard1Title    String
+  floatingCard1Subtitle String
+  floatingCard2Title    String
+  floatingCard2Subtitle String
+  pillarsJson           Json
+  signatureSplitJson    Json
+  ctaBannerJson         Json
+  published             Boolean  @default(true)
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
+
+model PageSection {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  scriptLabel String
+  title       String
+  description String
+  contentJson Json
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model MenuCategory {
+  id          String     @id @default(cuid())
+  slug        String     @unique
+  name        String
+  scriptLabel String
+  description String
+  sortOrder   Int        @default(0)
+  published   Boolean    @default(true)
+  items       MenuItem[]
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+}
+
+model MenuItem {
+  id          String       @id @default(cuid())
+  slug        String       @unique
+  name        String
+  description String
+  price       Float
+  imageUrl    String
+  featured    Boolean      @default(false)
+  tags        String[]
+  pairingNote String?
+  sortOrder   Int          @default(0)
+  published   Boolean      @default(true)
+  categoryId  String
+  category    MenuCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model GalleryImage {
+  id        String   @id @default(cuid())
+  title     String
+  caption   String
+  category  String
+  imageUrl  String
+  aspect    String   @default("square")
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Reservation {
+  id            String   @id @default(cuid())
+  referenceCode String   @unique
+  fullName      String
+  email         String
+  phone         String
+  guests        Int
+  date          String
+  timeSlot      String
+  seatingZone   String
+  occasion      String
+  notes         String?
+  status        String   @default("Confirmed")
+  published     Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  excerpt     String
+  content     String
+  coverImage  String
+  author      String   @default("Classico Team")
+  authorRole  String?  @default("Head Roaster & Chef")
+  category    String   @default("Culinary & Coffee")
+  readTime    String   @default("4 min read")
+  sortOrder   Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model FaqItem {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  category  String   @default("General")
+  sortOrder Int      @default(0)
+  published Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CustomerReview {
+  id         String   @id @default(cuid())
+  authorName String
+  authorRole String?  @default("Guest Diner")
+  rating     Int      @default(5)
+  comment    String
+  approved   Boolean  @default(false)
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

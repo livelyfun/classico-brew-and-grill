@@ -13,17 +13,21 @@ import {
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { getSiteConfig } from '@/lib/cms';
+import { SiteSettingsData } from '@/types/cms';
 
-export function LocationHoursSection() {
-  const site = getSiteConfig();
+export function LocationHoursSection({
+  settings,
+}: {
+  settings: SiteSettingsData | null;
+}) {
+  if (!settings) return null;
 
   return (
     <Section tone="mintSoft" id="visit">
       <SectionHeading
         scriptLabel="Join Us"
         title="Location & Opening Hours"
-        description="Nestled in the heart of Willow Creek Quarter. Walk-ins are always welcome at our espresso counter, while evening dining reservations are warmly recommended."
+        description={`Nestled in the heart of ${settings.district}. Walk-ins are always welcome at our espresso counter, while evening dining reservations are warmly recommended.`}
       />
 
       <motion.div
@@ -33,7 +37,6 @@ export function LocationHoursSection() {
         transition={{ duration: 0.55 }}
         className="mt-12 grid grid-cols-1 overflow-hidden rounded-3xl border border-brand-mint/40 bg-white shadow-elevated lg:grid-cols-12"
       >
-        {/* Left: Opening Hours & Contact */}
         <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-teal/10 px-3.5 py-1 text-xs font-semibold text-brand-teal">
             <span className="h-2 w-2 rounded-full bg-brand-teal animate-pulse" />
@@ -45,7 +48,7 @@ export function LocationHoursSection() {
           </h3>
 
           <div className="mt-6 divide-y divide-brand-mint/30">
-            {site.openingHours.map((slot) => (
+            {settings.openingHours.map((slot) => (
               <div
                 key={slot.days}
                 className="flex flex-col justify-between gap-1 py-4 sm:flex-row sm:items-center"
@@ -72,9 +75,9 @@ export function LocationHoursSection() {
                   Address
                 </p>
                 <p className="mt-1 text-sm text-brand-dark">
-                  {site.address.street}
+                  {settings.street}
                   <br />
-                  {site.address.city}
+                  {settings.city}
                 </p>
               </div>
             </div>
@@ -83,19 +86,19 @@ export function LocationHoursSection() {
               <div className="flex items-center gap-3 text-sm">
                 <Phone className="h-4 w-4 shrink-0 text-brand-teal" />
                 <a
-                  href={`tel:${site.contact.phone}`}
+                  href={`tel:${settings.phone}`}
                   className="font-medium text-brand-dark hover:text-brand-teal"
                 >
-                  {site.contact.phone}
+                  {settings.phone}
                 </a>
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Mail className="h-4 w-4 shrink-0 text-brand-teal" />
                 <a
-                  href={`mailto:${site.contact.email}`}
+                  href={`mailto:${settings.email}`}
                   className="text-brand-dark/80 hover:text-brand-teal truncate"
                 >
-                  {site.contact.email}
+                  {settings.email}
                 </a>
               </div>
             </div>
@@ -116,11 +119,10 @@ export function LocationHoursSection() {
           </div>
         </div>
 
-        {/* Right: Botanical Address Visual Card */}
         <div className="relative min-h-[320px] bg-brand-sage text-white lg:col-span-5">
           <img
             src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
-            alt="Classico Garden Terrace Seating"
+            alt="Garden Terrace Seating"
             loading="lazy"
             className="h-full w-full object-cover opacity-80"
           />
@@ -134,17 +136,17 @@ export function LocationHoursSection() {
 
             <div>
               <p className="font-script text-3xl text-brand-mint-light">
-                Willow Creek Quarter
+                {settings.district}
               </p>
               <h4 className="mt-1 font-heading text-2xl font-semibold text-white">
-                428 Botanical Promenade
+                {settings.street}
               </h4>
               <p className="mt-2 text-sm text-brand-mint-light/90">
-                Two blocks from the Botanical Conservatory gardens, with covered patio seating all year round.
+                {settings.city} — Year-round covered conservatory and courtyard dining.
               </p>
 
               <a
-                href={site.address.mapsQueryUrl}
+                href={settings.mapsQueryUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-dark shadow-md transition-colors hover:bg-brand-teal hover:text-white"

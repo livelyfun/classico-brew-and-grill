@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Check,
   Clock,
@@ -12,9 +13,20 @@ import {
   Send,
   Share2,
 } from 'lucide-react';
-import { navigationLinks, siteConfig } from '@/data/siteData';
+import { SiteSettingsData } from '@/types/cms';
 
-export function Footer() {
+const navigationLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '/menu' },
+  { label: 'About', href: '/about' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Blog & Stories', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+];
+
+export function Footer({ settings }: { settings: SiteSettingsData | null }) {
+  const pathname = usePathname();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -24,6 +36,10 @@ export function Footer() {
     setSubscribed(true);
     setEmail('');
   };
+
+  if (pathname?.startsWith('/classic-admin') || !settings) {
+    return null;
+  }
 
   return (
     <footer className="relative overflow-hidden bg-brand-dark text-white">
@@ -43,14 +59,14 @@ export function Footer() {
             <Link href="/" className="inline-flex items-center gap-3.5 group">
               <div className="h-14 w-14 rounded-full bg-white p-1 shadow-md ring-2 ring-brand-mint/40 transition-transform group-hover:scale-105">
                 <img
-                  src="/images/logo.png"
-                  alt="Classico Brew & Grill Logo"
+                  src={settings.logoUrl || '/images/logo.png'}
+                  alt={settings.brandName}
                   className="h-full w-full object-contain"
                 />
               </div>
               <div>
                 <p className="font-heading text-2xl font-semibold text-white">
-                  Classico
+                  {settings.shortName}
                 </p>
                 <p className="text-[11px] uppercase tracking-[0.25em] text-brand-mint">
                   Brew &amp; Grill
@@ -59,13 +75,13 @@ export function Footer() {
             </Link>
 
             <p className="text-sm leading-relaxed text-brand-mint-light/85 max-w-sm">
-              {siteConfig.subTagline}
+              {settings.subTagline}
             </p>
 
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-1">
               <a
-                href={siteConfig.socials.instagram}
+                href={settings.instagramUrl}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Instagram"
@@ -74,7 +90,7 @@ export function Footer() {
                 <Instagram className="h-4 w-4" />
               </a>
               <a
-                href={siteConfig.socials.facebook}
+                href={settings.facebookUrl}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="Facebook"
@@ -83,8 +99,8 @@ export function Footer() {
                 <Share2 className="h-4 w-4" />
               </a>
               <a
-                href={`mailto:${siteConfig.contact.email}`}
-                aria-label="Email Classico"
+                href={`mailto:${settings.email}`}
+                aria-label={`Email ${settings.brandName}`}
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
               >
                 <Mail className="h-4 w-4" />
@@ -128,24 +144,24 @@ export function Footer() {
               <div className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal" />
                 <span>
-                  {siteConfig.address.street}
+                  {settings.street}
                   <br />
-                  {siteConfig.address.city}
+                  {settings.city}
                 </span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-brand-teal" />
                 <a
-                  href={`tel:${siteConfig.contact.phone}`}
+                  href={`tel:${settings.phone}`}
                   className="hover:text-white transition-colors"
                 >
-                  {siteConfig.contact.phone}
+                  {settings.phone}
                 </a>
               </div>
               <div className="flex items-start gap-2.5 pt-1">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-brand-teal" />
                 <div className="space-y-1 text-xs text-brand-mint-light/80">
-                  {siteConfig.openingHours.map((slot) => (
+                  {settings.openingHours.map((slot) => (
                     <p key={slot.days}>
                       <span className="font-medium text-white">{slot.days}:</span>{' '}
                       {slot.hours}
@@ -195,7 +211,7 @@ export function Footer() {
         {/* Bottom Copyright Row */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-7 text-xs text-brand-mint-light/65 sm:flex-row">
           <p>
-            © {new Date().getFullYear()} {siteConfig.brandName}. Crafted with care.
+            © {new Date().getFullYear()} {settings.brandName}. Crafted with care.
           </p>
           <p className="font-script text-xl text-brand-mint-light/90">
             Roasted Daily • Wood-Fired Every Evening

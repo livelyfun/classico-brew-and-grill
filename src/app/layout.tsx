@@ -2,7 +2,10 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { getPublishedSiteSettings } from '@/lib/cms';
 import './globals.css';
+
+export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: {
@@ -10,14 +13,16 @@ export const metadata: Metadata = {
     template: '%s | Classico Brew & Grill',
   },
   description:
-    'A serene botanical café and open-hearth grill in Willow Creek Quarter. Specialty single-origin brews by morning, wood-fired culinary craft into the evening.',
+    'A serene botanical café and open-hearth grill. Specialty single-origin brews by morning, wood-fired culinary craft into the evening.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const settings = await getPublishedSiteSettings();
+
   return (
     <html lang="en">
       <head>
@@ -33,9 +38,9 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col bg-brand-bg font-sans text-brand-dark antialiased">
-        <Navbar />
+        <Navbar settings={settings} />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <Footer settings={settings} />
       </body>
     </html>
   );

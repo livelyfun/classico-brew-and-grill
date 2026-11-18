@@ -7,33 +7,40 @@ import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { MenuCard } from '@/components/ui/MenuCard';
 import { Button } from '@/components/ui/Button';
-import { getAllMenuItems, getFeaturedMenuItems, getMenuCategories } from '@/lib/cms';
-import { MenuCategorySlug } from '@/types/cms';
+import { MenuCategory, MenuItem } from '@/types/cms';
 import { cn } from '@/lib/utils';
 
-export function FeaturedMenuSection() {
-  const categories = getMenuCategories();
-  const allItems = getAllMenuItems();
-  const featuredItems = getFeaturedMenuItems();
+export function FeaturedMenuSection({
+  categories,
+  items,
+}: {
+  categories: MenuCategory[];
+  items: MenuItem[];
+}) {
+  const featuredItems = useMemo(
+    () => items.filter((item) => item.featured),
+    [items]
+  );
 
-  const [activeTab, setActiveTab] = useState<'featured' | MenuCategorySlug>('featured');
+  const [activeTab, setActiveTab] = useState<string>('featured');
 
   const visibleItems = useMemo(() => {
     if (activeTab === 'featured') {
-      return featuredItems.slice(0, 6);
+      return (featuredItems.length > 0 ? featuredItems : items).slice(0, 6);
     }
-    return allItems.filter((item) => item.category === activeTab).slice(0, 3);
-  }, [activeTab, allItems, featuredItems]);
+    return items.filter((item) => item.categorySlug === activeTab).slice(0, 3);
+  }, [activeTab, featuredItems, items]);
+
+  if (items.length === 0) return null;
 
   return (
     <Section tone="sageTint" id="featured-menu">
       <SectionHeading
         scriptLabel="Curated Highlights"
         title="Taste the Classico Table"
-        description="Preview our kitchen and roastery favorites, thoughtfully prepared daily from seasonal harvests and roasted to order."
+        description="Preview our published kitchen and roastery favorites, thoughtfully prepared daily from seasonal harvests and roasted to order."
       />
 
-      {/* Category Preview Tabs */}
       <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
         <button
           type="button"
@@ -50,7 +57,7 @@ export function FeaturedMenuSection() {
 
         {categories.map((cat) => (
           <button
-            key={cat.slug}
+            key={cat.id}
             type="button"
             onClick={() => setActiveTab(cat.slug)}
             className={cn(
@@ -65,7 +72,6 @@ export function FeaturedMenuSection() {
         ))}
       </div>
 
-      {/* Cards Grid */}
       <motion.div
         key={activeTab}
         initial={{ opacity: 0, y: 12 }}

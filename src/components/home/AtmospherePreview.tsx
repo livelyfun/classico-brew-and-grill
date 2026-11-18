@@ -7,19 +7,30 @@ import { ArrowRight, Camera } from 'lucide-react';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
-import { getGalleryItems } from '@/lib/cms';
+import { GalleryItem } from '@/types/cms';
 
-export function AtmospherePreview() {
-  const previewPhotos = getGalleryItems('all').slice(0, 5);
+export function AtmospherePreview({
+  photos,
+  scriptLabel = 'The Sanctuary',
+  title = 'Atmosphere & Conservatory Glimpses',
+  description = 'Soft sage banquettes, warm oak tables, indoor olive greenery, and the ambient glow of the open hearth.',
+}: {
+  photos: GalleryItem[];
+  scriptLabel?: string;
+  title?: string;
+  description?: string;
+}) {
+  const previewPhotos = photos.slice(0, 5);
+  if (previewPhotos.length === 0) return null;
 
   return (
     <Section tone="white" id="atmosphere">
       <div className="flex flex-col items-center justify-between gap-6 md:flex-row md:items-end">
         <SectionHeading
           align="left"
-          scriptLabel="The Sanctuary"
-          title="Atmosphere & Conservatory Glimpses"
-          description="Soft sage banquettes, warm oak tables, indoor olive greenery, and the ambient glow of the open hearth."
+          scriptLabel={scriptLabel}
+          title={title}
+          description={description}
           className="md:max-w-xl"
         />
 
@@ -34,14 +45,11 @@ export function AtmospherePreview() {
         </Button>
       </div>
 
-      {/* Editorial Bento Photo Grid */}
       <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-12 lg:grid-rows-2">
         {previewPhotos.map((photo, index) => {
           const spanClass =
             index === 0
               ? 'lg:col-span-6 lg:row-span-2 min-h-[320px] lg:min-h-[460px]'
-              : index === 1 || index === 2
-              ? 'lg:col-span-3 min-h-[220px]'
               : 'lg:col-span-3 min-h-[220px]';
 
           return (
@@ -55,7 +63,7 @@ export function AtmospherePreview() {
             >
               <Link href="/gallery" className="block h-full w-full">
                 <img
-                  src={photo.image}
+                  src={photo.imageUrl}
                   alt={photo.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"

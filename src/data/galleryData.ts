@@ -1,4 +1,11 @@
-import { GalleryItem } from '@/types/cms';
+interface SeedGalleryItem {
+  id: string;
+  title: string;
+  caption: string;
+  category: string;
+  image: string;
+  aspect?: string;
+}
 
 export const galleryCategories = [
   { key: 'all', label: 'All Moments' },
@@ -8,7 +15,7 @@ export const galleryCategories = [
   { key: 'desserts', label: 'Desserts & Drinks' },
 ] as const;
 
-export const galleryItems: GalleryItem[] = [
+export const galleryItems: SeedGalleryItem[] = [
   {
     id: 'gal-1',
     title: 'The Botanical Conservatory',

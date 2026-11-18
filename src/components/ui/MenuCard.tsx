@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Flame, Leaf, Sparkles } from 'lucide-react';
-import { DietaryTag, MenuItem } from '@/types/cms';
+import { MenuItem } from '@/types/cms';
 import { cn, formatPrice } from '@/lib/utils';
 
 interface MenuCardProps {
@@ -11,7 +11,7 @@ interface MenuCardProps {
   index?: number;
 }
 
-function getTagStyle(tag: DietaryTag) {
+function getTagStyle(tag: string) {
   switch (tag) {
     case 'Signature':
       return 'bg-brand-teal/12 text-brand-teal border-brand-teal/25';
@@ -36,7 +36,7 @@ export function MenuCard({ item, index = 0 }: MenuCardProps) {
       {/* Image Header */}
       <div className="relative h-52 w-full overflow-hidden bg-brand-bg">
         <img
-          src={item.image}
+          src={item.imageUrl}
           alt={item.name}
           loading="lazy"
           className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"

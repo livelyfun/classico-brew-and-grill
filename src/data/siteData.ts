@@ -1,12 +1,48 @@
 import {
   BrandValue,
-  CraftLeader,
+  OpeningHour,
   SeatingZone,
-  SiteConfig,
   Testimonial,
 } from '@/types/cms';
 
-export const siteConfig: SiteConfig = {
+interface SeedCraftLeader {
+  id: string;
+  name: string;
+  role: string;
+  specialty: string;
+  bio: string;
+  image: string;
+}
+
+interface SeedSiteConfig {
+  brandName: string;
+  shortName: string;
+  tagline: string;
+  subTagline: string;
+  address: {
+    street: string;
+    district: string;
+    city: string;
+    full: string;
+    mapsQueryUrl: string;
+    mapsEmbedUrl: string;
+  };
+  contact: {
+    phone: string;
+    email: string;
+    eventsEmail: string;
+  };
+  socials: {
+    instagram: string;
+    facebook: string;
+    tripadvisor: string;
+  };
+  openingHours: OpeningHour[];
+  roasteryHours: string;
+  grillHours: string;
+}
+
+export const siteConfig: SeedSiteConfig = {
   brandName: 'Classico Brew & Grill',
   shortName: 'Classico',
   tagline: 'Where Artisanal Roasts Meet the Open Flame',
@@ -113,7 +149,7 @@ export const storyChapters = [
   },
 ];
 
-export const craftLeaders: CraftLeader[] = [
+export const craftLeaders: SeedCraftLeader[] = [
   {
     id: 'leader-1',
     name: 'Elena Vance',

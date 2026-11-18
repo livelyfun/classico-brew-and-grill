@@ -1,6 +1,25 @@
-import { MenuCategory, MenuItem } from '@/types/cms';
+interface SeedMenuCategory {
+  id: string;
+  slug: string;
+  name: string;
+  scriptLabel: string;
+  description: string;
+}
 
-export const menuCategories: MenuCategory[] = [
+interface SeedMenuItem {
+  id: string;
+  slug: string;
+  name: string;
+  category: string;
+  price: number;
+  description: string;
+  image: string;
+  featured?: boolean;
+  tags?: string[];
+  pairingNote?: string;
+}
+
+export const menuCategories: SeedMenuCategory[] = [
   {
     id: 'cat-coffee',
     slug: 'coffee-brews',
@@ -51,7 +70,7 @@ export const menuCategories: MenuCategory[] = [
   },
 ];
 
-export const menuItems: MenuItem[] = [
+export const menuItems: SeedMenuItem[] = [
   // 1. COFFEE & BREWS
   {
     id: 'cb-1',

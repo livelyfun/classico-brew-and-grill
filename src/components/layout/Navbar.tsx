@@ -5,11 +5,21 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
 import { CalendarDays, Clock, Menu, Phone, X } from 'lucide-react';
-import { navigationLinks, siteConfig } from '@/data/siteData';
 import { Button } from '@/components/ui/Button';
+import { SiteSettingsData } from '@/types/cms';
 import { cn } from '@/lib/utils';
 
-export function Navbar() {
+const navigationLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Menu', href: '/menu' },
+  { label: 'About', href: '/about' },
+  { label: 'Gallery', href: '/gallery' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'FAQ', href: '/faq' },
+  { label: 'Contact', href: '/contact' },
+];
+
+export function Navbar({ settings }: { settings: SiteSettingsData | null }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -25,6 +35,16 @@ export function Navbar() {
     setMobileOpen(false);
   }, [pathname]);
 
+  if (pathname?.startsWith('/classic-admin')) {
+    return null;
+  }
+
+  const shortName = settings?.shortName || 'Classico';
+  const brandName = settings?.brandName || 'Classico Brew & Grill';
+  const logoUrl = settings?.logoUrl || '/images/logo.png';
+  const phone = settings?.phone || '';
+  const todayHours = settings?.openingHours?.[0]?.hours || '';
+
   return (
     <header
       className={cn(
@@ -39,18 +59,18 @@ export function Navbar() {
         <Link
           href="/"
           className="group flex items-center gap-3 focus:outline-none"
-          aria-label="Classico Brew & Grill Home"
+          aria-label={`${brandName} Home`}
         >
           <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full bg-white/90 p-0.5 shadow-sm ring-1 ring-brand-mint/40 transition-transform duration-300 group-hover:scale-105">
             <img
-              src="/images/logo.png"
-              alt="Classico Brew & Grill Wreath Logo"
+              src={logoUrl}
+              alt={`${brandName} Logo`}
               className="h-full w-full object-contain"
             />
           </div>
           <div className="flex flex-col leading-none">
             <span className="font-heading text-xl sm:text-2xl font-semibold tracking-tight text-brand-dark transition-colors group-hover:text-brand-teal">
-              Classico
+              {shortName}
             </span>
             <span className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-brand-sage">
               Brew &amp; Grill
@@ -166,16 +186,22 @@ export function Navbar() {
                 </Button>
               </div>
 
-              <div className="mt-4 flex flex-col gap-2 rounded-xl bg-brand-bg p-4 text-xs text-brand-dark/75">
-                <div className="flex items-center gap-2">
-                  <Clock className="h-3.5 w-3.5 text-brand-teal" />
-                  <span>Open Today: {siteConfig.openingHours[0].hours}</span>
+              {(todayHours || phone) && (
+                <div className="mt-4 flex flex-col gap-2 rounded-xl bg-brand-bg p-4 text-xs text-brand-dark/75">
+                  {todayHours && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="h-3.5 w-3.5 text-brand-teal" />
+                      <span>Open Today: {todayHours}</span>
+                    </div>
+                  )}
+                  {phone && (
+                    <div className="flex items-center gap-2">
+                      <Phone className="h-3.5 w-3.5 text-brand-teal" />
+                      <span>{phone}</span>
+                    </div>
+                  )}
                 </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="h-3.5 w-3.5 text-brand-teal" />
-                  <span>{siteConfig.contact.phone}</span>
-                </div>
-              </div>
+              )}
             </div>
           </motion.div>
         )}
