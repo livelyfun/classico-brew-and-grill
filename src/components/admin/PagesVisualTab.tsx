@@ -174,16 +174,17 @@ export function PagesVisualTab({
   };
 
   return (
-    <div className="flex flex-col gap-6 lg:h-[calc(100vh-7.5rem)] lg:flex-row lg:items-start lg:overflow-hidden">
+    <div className="flex flex-col gap-3 lg:gap-6 lg:h-[calc(100vh-7.5rem)] lg:flex-row lg:items-start lg:overflow-hidden">
       {/* Persistent Fixed & Collapsible Page Selector Rail / Sidebar */}
-      <aside
-        className={cn(
-          'shrink-0 rounded-3xl border border-brand-mint/45 bg-white shadow-soft transition-all duration-300 ease-in-out lg:h-full lg:overflow-y-auto overflow-x-hidden',
-          isSidebarOpen
-            ? 'w-full p-4 lg:w-72 xl:w-80'
-            : 'w-full p-2.5 lg:w-[76px]'
-        )}
-      >
+      <div className="sticky top-[77px] sm:top-[81px] z-20 -mx-4 -mt-5 bg-brand-bg/95 px-4 pt-5 pb-3 backdrop-blur-sm sm:-mx-6 sm:px-6 lg:static lg:m-0 lg:h-full lg:shrink-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+        <aside
+          className={cn(
+            'max-h-[calc(100vh-7.5rem)] overflow-y-auto overflow-x-hidden shrink-0 rounded-3xl border border-brand-mint/45 bg-white shadow-soft transition-all duration-300 ease-in-out lg:max-h-none lg:h-full',
+            isSidebarOpen
+              ? 'w-full p-4 lg:w-72 xl:w-80'
+              : 'w-full p-2.5 lg:w-[76px]'
+          )}
+        >
         {isSidebarOpen ? (
           <>
             <div className="mb-3 flex items-center justify-between border-b border-brand-mint/25 pb-3 px-1">
@@ -315,7 +316,8 @@ export function PagesVisualTab({
             </div>
           </div>
         )}
-      </aside>
+        </aside>
+      </div>
 
       {/* Right Scrollable Page Editor Pane */}
       <form
