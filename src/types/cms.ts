@@ -80,6 +80,7 @@ export interface HeroContentData {
   secondaryCtaLabel: string;
   secondaryCtaHref: string;
   heroImageUrl: string;
+  heroImages: string[];
   floatingCard1Title: string;
   floatingCard1Subtitle: string;
   floatingCard2Title: string;

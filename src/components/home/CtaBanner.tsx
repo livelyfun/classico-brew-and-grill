@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CalendarDays, Sparkles, Utensils } from 'lucide-react';
+import { CalendarDays, Utensils } from 'lucide-react';
 import { Section } from '@/components/ui/Section';
 import { Button } from '@/components/ui/Button';
 import { CtaBannerData } from '@/types/cms';
@@ -28,12 +28,7 @@ export function CtaBanner({ data }: { data: CtaBannerData }) {
         transition={{ duration: 0.55 }}
         className="mx-auto max-w-3xl text-center"
       >
-        <div className="inline-flex items-center gap-2 rounded-full border border-brand-mint-light/35 bg-white/10 px-4 py-1.5 text-xs font-medium text-brand-mint-light backdrop-blur-sm">
-          <Sparkles className="h-3.5 w-3.5" />
-          <span>{data.badgeText}</span>
-        </div>
-
-        <p className="mt-6 font-script text-3xl sm:text-4xl text-brand-mint-light">
+        <p className="font-script text-3xl sm:text-4xl text-brand-mint-light">
           {data.scriptAccent}
         </p>
 

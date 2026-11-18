@@ -3,5 +3,11 @@ export function cn(...classes: Array<string | false | null | undefined>): string
 }
 
 export function formatPrice(amount: number): string {
-  return `$${amount.toFixed(2)}`;
+  const formatted = Number.isInteger(amount)
+    ? amount.toLocaleString('en-NP')
+    : amount.toLocaleString('en-NP', {
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 2,
+      });
+  return `Rs. ${formatted}`;
 }

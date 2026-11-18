@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -23,17 +23,110 @@ export function Navbar({ settings }: { settings: SiteSettingsData | null }) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+
+  const lastScrollYRef = useRef(0);
+  const headerRef = useRef<HTMLElement | null>(null);
+  const isHoveringNavRef = useRef(false);
+  const mobileOpenRef = useRef(false);
+  const hiddenRef = useRef(false);
+  const idleTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const scheduleIdleHide = useCallback(() => {
+    if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    idleTimerRef.current = setTimeout(() => {
+      if (!isHoveringNavRef.current && !mobileOpenRef.current) {
+        setHidden(true);
+      }
+    }, 4000);
+  }, []);
+
+  const wakeNavbar = useCallback(() => {
+    setHidden(false);
+    scheduleIdleHide();
+  }, [scheduleIdleHide]);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 18);
-    onScroll();
+    hiddenRef.current = hidden;
+  }, [hidden]);
+
+  useEffect(() => {
+    if (pathname?.startsWith('/classic-admin')) {
+      document.documentElement.style.setProperty('--navbar-offset', '0px');
+      return;
+    }
+
+    const syncOffset = () => {
+      const isHidden = hidden && !mobileOpen;
+      const offset = isHidden
+        ? 0
+        : headerRef.current?.offsetHeight ?? (scrolled ? 69 : 76);
+
+      document.documentElement.style.setProperty(
+        '--navbar-offset',
+        `${offset}px`
+      );
+      window.dispatchEvent(
+        new CustomEvent('classico:navbar-offset', {
+          detail: { offset, hidden: isHidden },
+        })
+      );
+    };
+
+    syncOffset();
+    window.addEventListener('resize', syncOffset);
+    return () => window.removeEventListener('resize', syncOffset);
+  }, [hidden, mobileOpen, scrolled, pathname]);
+
+  useEffect(() => {
+    mobileOpenRef.current = mobileOpen;
+    if (mobileOpen) {
+      setHidden(false);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    } else {
+      scheduleIdleHide();
+    }
+  }, [mobileOpen, scheduleIdleHide]);
+
+  useEffect(() => {
+    lastScrollYRef.current = window.scrollY;
+    setScrolled(window.scrollY > 18);
+    scheduleIdleHide();
+
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setScrolled(currentY > 18);
+      const delta = currentY - lastScrollYRef.current;
+
+      if (delta > 6 && currentY > 36 && !mobileOpenRef.current) {
+        setHidden(true);
+        if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+      } else if (delta < -6 || (currentY <= 18 && delta < 0)) {
+        wakeNavbar();
+      }
+
+      lastScrollYRef.current = currentY;
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (e.clientY <= 8 && hiddenRef.current) {
+        wakeNavbar();
+      }
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+    window.addEventListener('mousemove', onMouseMove, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('mousemove', onMouseMove);
+      if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+    };
+  }, [scheduleIdleHide, wakeNavbar]);
 
   useEffect(() => {
     setMobileOpen(false);
-  }, [pathname]);
+    wakeNavbar();
+  }, [pathname, wakeNavbar]);
 
   if (pathname?.startsWith('/classic-admin')) {
     return null;
@@ -46,14 +139,48 @@ export function Navbar({ settings }: { settings: SiteSettingsData | null }) {
   const todayHours = settings?.openingHours?.[0]?.hours || '';
 
   return (
-    <header
-      className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'border-b border-brand-mint/35 bg-brand-bg/92 py-2.5 shadow-soft backdrop-blur-md'
-          : 'bg-brand-bg/75 py-3.5 backdrop-blur-sm'
+    <>
+      {hidden && !mobileOpen && (
+        <div
+          aria-hidden="true"
+          onMouseEnter={wakeNavbar}
+          onTouchStart={wakeNavbar}
+          className="fixed inset-x-0 top-0 z-40 h-1.5"
+        />
       )}
-    >
+      <header
+        ref={headerRef}
+        onMouseEnter={() => {
+          isHoveringNavRef.current = true;
+          setHidden(false);
+          if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+        }}
+        onMouseMove={() => {
+          isHoveringNavRef.current = true;
+          if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
+        }}
+        onMouseLeave={() => {
+          isHoveringNavRef.current = false;
+          scheduleIdleHide();
+        }}
+        onFocusCapture={() => {
+          setHidden(false);
+          scheduleIdleHide();
+        }}
+        onTouchStart={() => {
+          setHidden(false);
+          scheduleIdleHide();
+        }}
+        className={cn(
+          'fixed inset-x-0 top-0 z-50 transform transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+          hidden && !mobileOpen
+            ? '-translate-y-full opacity-0 pointer-events-none'
+            : 'translate-y-0 opacity-100',
+          scrolled
+            ? 'border-b border-brand-mint/35 bg-brand-bg/92 py-2.5 shadow-soft backdrop-blur-md'
+            : 'bg-brand-bg/75 py-3.5 backdrop-blur-sm'
+        )}
+      >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Brand Logo & Wordmark */}
         <Link
@@ -207,5 +334,6 @@ export function Navbar({ settings }: { settings: SiteSettingsData | null }) {
         )}
       </AnimatePresence>
     </header>
+    </>
   );
 }

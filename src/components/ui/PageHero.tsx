@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 
 interface PageHeroProps {
   scriptLabel: string;
@@ -36,11 +35,7 @@ export function PageHero({ scriptLabel, title, description }: PageHeroProps) {
             {title}
           </h1>
 
-          <div className="mt-5 flex items-center justify-center gap-3">
-            <span className="h-[1px] w-12 bg-brand-mint" />
-            <Sparkles className="h-4 w-4 text-brand-teal" />
-            <span className="h-[1px] w-12 bg-brand-mint" />
-          </div>
+          <div className="mx-auto mt-5 h-[1px] w-14 bg-brand-mint" />
 
           <p className="mx-auto mt-5 max-w-2xl text-base md:text-lg leading-relaxed text-brand-dark/75">
             {description}

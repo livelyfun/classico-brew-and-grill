@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface SectionHeadingProps {
@@ -56,32 +55,14 @@ export function SectionHeading({
         {title}
       </h2>
 
-      {/* Delicate botanical sparkle divider matching the Classico logo */}
+      {/* Minimal editorial accent rule */}
       <div
         className={cn(
-          'mt-4 flex items-center gap-3',
-          isCentered ? 'justify-center' : 'justify-start'
+          'mt-4 h-[1px] w-14',
+          isCentered ? 'mx-auto' : '',
+          light ? 'bg-brand-mint-light/50' : 'bg-brand-mint'
         )}
-      >
-        <span
-          className={cn(
-            'h-[1px] w-10 rounded-full',
-            light ? 'bg-brand-mint-light/50' : 'bg-brand-mint'
-          )}
-        />
-        <Sparkles
-          className={cn(
-            'h-4 w-4',
-            light ? 'text-brand-mint-light' : 'text-brand-teal'
-          )}
-        />
-        <span
-          className={cn(
-            'h-[1px] w-10 rounded-full',
-            light ? 'bg-brand-mint-light/50' : 'bg-brand-mint'
-          )}
-        />
-      </div>
+      />
 
       {description && (
         <p

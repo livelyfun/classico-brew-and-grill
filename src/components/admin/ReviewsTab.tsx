@@ -429,7 +429,7 @@ export function ReviewsTab({ reviews, onMutate, busy }: ReviewsTabProps) {
                 </div>
               </div>
 
-              <blockquote className="text-xs sm:text-sm text-brand-dark/85 leading-relaxed italic">
+              <blockquote className="text-xs sm:text-sm text-brand-dark/85 leading-relaxed">
                 &ldquo;{r.comment}&rdquo;
               </blockquote>
 

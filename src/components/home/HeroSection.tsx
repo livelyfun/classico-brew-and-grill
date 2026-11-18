@@ -1,23 +1,28 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useMemo, useState } from 'react';
+import { motion, type Transition } from 'framer-motion';
 import {
   ArrowRight,
   CalendarDays,
   Coffee,
   Flame,
   Leaf,
-  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { HeroContentData } from '@/types/cms';
+import { cn } from '@/lib/utils';
 
-const vaporPlumes = [
-  { id: 'v1', left: '40%', width: 42, height: 84, driftX: -10, delay: 0, duration: 4.8 },
-  { id: 'v2', left: '49%', width: 54, height: 96, driftX: 8, delay: 1.4, duration: 5.4 },
-  { id: 'v3', left: '57%', width: 38, height: 78, driftX: 12, delay: 2.7, duration: 4.5 },
+const fallbackGridImages = [
+  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80',
 ];
+
+const silkEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const iconMap = {
   Coffee,
@@ -25,7 +30,129 @@ const iconMap = {
   Leaf,
 };
 
+function GridTile({
+  images,
+  activeIdx,
+  prevIdx,
+  alt,
+  className,
+  waveDelay = 0,
+}: {
+  images: string[];
+  activeIdx: number;
+  prevIdx: number;
+  alt: string;
+  className: string;
+  waveDelay?: number;
+}) {
+  const isTwoImages = images.length === 2;
+
+  return (
+    <div className={cn('relative', className)}>
+      <div className="relative h-full w-full overflow-hidden rounded-3xl border border-brand-mint/45 bg-brand-dark/10 shadow-soft ring-1 ring-white/80">
+        {images.map((imgUrl, idx) => {
+          const isActive = idx === activeIdx;
+          const isPrev = idx === prevIdx && activeIdx !== prevIdx;
+          const zIndex = isActive ? 20 : isPrev ? 10 : 0;
+
+          let animateProps = { opacity: 0, scale: 1.07 };
+          let transitionProps: Transition = { duration: 0.25, delay: 0 };
+
+          if (isActive) {
+            animateProps = { opacity: 1, scale: 1 };
+            transitionProps =
+              prevIdx === activeIdx
+                ? { duration: 0 }
+                : {
+                    duration: 1.4,
+                    delay: waveDelay,
+                    ease: silkEase,
+                  };
+          } else if (isPrev) {
+            if (isTwoImages) {
+              animateProps = { opacity: 0, scale: 1.07 };
+              transitionProps = {
+                duration: 0.05,
+                delay: waveDelay + 1.4,
+              };
+            } else {
+              animateProps = { opacity: 1, scale: 1 };
+              transitionProps = { duration: 0.2, delay: 0 };
+            }
+          }
+
+          return (
+            <motion.img
+              key={imgUrl}
+              src={imgUrl}
+              alt={alt}
+              decoding="async"
+              initial={false}
+              animate={animateProps}
+              transition={transitionProps}
+              style={{ zIndex, willChange: 'transform, opacity' }}
+              className="pointer-events-none absolute inset-0 h-full w-full object-cover"
+            />
+          );
+        })}
+
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-30 bg-gradient-to-t from-brand-dark/25 via-transparent to-transparent"
+        />
+      </div>
+    </div>
+  );
+}
+
 export function HeroSection({ hero }: { hero: HeroContentData }) {
+  const images = useMemo(() => {
+    const cmsList = Array.from(
+      new Set(
+        (hero.heroImages ?? [])
+          .map((u) => u.trim())
+          .filter((u) => u && u !== '/images/hero-latte.png')
+      )
+    );
+
+    if (cmsList.length >= 2) {
+      return cmsList;
+    }
+    if (cmsList.length === 1) {
+      return [cmsList[0], ...fallbackGridImages.filter((f) => f !== cmsList[0])];
+    }
+    return fallbackGridImages;
+  }, [hero.heroImages]);
+
+  const [{ step, prevStep }, setCycleState] = useState({
+    step: 0,
+    prevStep: 0,
+  });
+
+  useEffect(() => {
+    if (images.length <= 1) return;
+    const timer = setInterval(() => {
+      setCycleState((prev) => ({
+        step: prev.step + 1,
+        prevStep: prev.step,
+      }));
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  const activeCycleIndex = step % images.length;
+
+  const handleJump = (targetIdx: number) => {
+    setCycleState((prev) => {
+      const currentIdx = prev.step % images.length;
+      if (currentIdx === targetIdx) return prev;
+      return {
+        step: targetIdx,
+        prevStep: currentIdx,
+      };
+    });
+  };
+
   return (
     <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-gradient-to-b from-white via-brand-bg to-brand-bg pt-24 pb-16 md:pt-28 md:pb-24">
       <div
@@ -46,12 +173,7 @@ export function HeroSection({ hero }: { hero: HeroContentData }) {
             transition={{ duration: 0.65, ease: 'easeOut' }}
             className="lg:col-span-7 text-center lg:text-left"
           >
-            <div className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-white/90 px-4 py-1.5 text-xs font-medium tracking-wide text-brand-sage shadow-sm">
-              <Sparkles className="h-3.5 w-3.5 text-brand-teal" />
-              <span>{hero.badgeText}</span>
-            </div>
-
-            <p className="mt-6 font-script text-3xl sm:text-4xl text-brand-teal">
+            <p className="font-script text-3xl sm:text-4xl text-brand-teal">
               {hero.scriptAccent}
             </p>
 
@@ -111,109 +233,97 @@ export function HeroSection({ hero }: { hero: HeroContentData }) {
             )}
           </motion.div>
 
-          {/* Right Photorealistic CMS Showcase Column */}
+          {/* Right Editorial 4-Tile Bento Grid Showcase Column */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
+            initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, delay: 0.15, ease: 'easeOut' }}
-            className="lg:col-span-5 flex justify-center"
+            className="lg:col-span-5"
           >
-            <div className="relative flex h-80 w-80 items-center justify-center sm:h-[420px] sm:w-[420px]">
+            <div className="relative mx-auto w-full max-w-[480px]">
+              {/* Soft Ambient Botanical Glow */}
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-4 rounded-full bg-gradient-to-b from-white via-brand-bg/90 to-brand-mint-light/30 shadow-soft ring-1 ring-brand-mint/35"
+                className="pointer-events-none absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-brand-mint-light/35 via-white/40 to-brand-teal/15 blur-2xl"
               />
 
-              {/* Subtle Soft-Blurred Rising Steam Vapor */}
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute inset-x-0 top-6 z-20 h-28 overflow-visible"
-              >
-                {vaporPlumes.map((plume) => (
-                  <motion.div
-                    key={plume.id}
-                    style={{
-                      left: plume.left,
-                      width: plume.width,
-                      height: plume.height,
-                    }}
-                    className="absolute bottom-0 -translate-x-1/2 rounded-full bg-gradient-to-t from-white/70 via-white/35 to-transparent blur-lg"
-                    initial={{ opacity: 0, y: 12, scale: 0.85, x: 0 }}
-                    animate={{
-                      opacity: [0, 0.52, 0.28, 0],
-                      y: [12, -26, -54, -78],
-                      x: [0, plume.driftX * 0.5, plume.driftX, plume.driftX * 0.6],
-                      scale: [0.85, 1.05, 1.25, 1.4],
-                    }}
-                    transition={{
-                      duration: plume.duration,
-                      delay: plume.delay,
-                      repeat: Infinity,
-                      ease: 'easeOut',
-                    }}
-                  />
-                ))}
+              {/* Asymmetric 2x2 Bento Photo Grid with Clockwise Silk Wave */}
+              <div className="relative grid grid-cols-2 items-start gap-3.5 sm:gap-4">
+                {/* Slot 0 (Top-Left Feature Tile — Wave Step 1: 0s) */}
+                <GridTile
+                  images={images}
+                  activeIdx={step % images.length}
+                  prevIdx={prevStep % images.length}
+                  alt={`${hero.headline} — Artisanal Brews & Atmosphere`}
+                  className="h-44 sm:h-56"
+                  waveDelay={0}
+                />
+
+                {/* Slot 1 (Top-Right Staggered Tile — Wave Step 2: 0.16s) */}
+                <GridTile
+                  images={images}
+                  activeIdx={(step + 1) % images.length}
+                  prevIdx={(prevStep + 1) % images.length}
+                  alt={`${hero.headline} — Wood-Fired Grill & Dining`}
+                  className="h-40 sm:mt-8 sm:h-48"
+                  waveDelay={0.16}
+                />
+
+                {/* Slot 2 (Bottom-Left Tile — Wave Step 4: 0.48s clockwise) */}
+                <GridTile
+                  images={images}
+                  activeIdx={(step + 2) % images.length}
+                  prevIdx={(prevStep + 2) % images.length}
+                  alt={`${hero.headline} — Botanical Conservatory`}
+                  className="h-40 sm:h-48"
+                  waveDelay={0.48}
+                />
+
+                {/* Slot 3 (Bottom-Right Feature Tile — Wave Step 3: 0.32s clockwise) */}
+                <GridTile
+                  images={images}
+                  activeIdx={(step + 3) % images.length}
+                  prevIdx={(prevStep + 3) % images.length}
+                  alt={`${hero.headline} — Signature Craft`}
+                  className="h-44 sm:h-56"
+                  waveDelay={0.32}
+                />
               </div>
 
-              <motion.div
-                aria-hidden="true"
-                animate={{
-                  scale: [1, 0.93, 1],
-                  opacity: [0.22, 0.14, 0.22],
-                }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="pointer-events-none absolute bottom-10 h-7 w-56 rounded-full bg-brand-dark/35 blur-xl sm:bottom-12 sm:w-64"
-              />
-
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
-                className="relative z-10 h-72 w-72 sm:h-[370px] sm:w-[370px]"
-              >
-                <img
-                  src={hero.heroImageUrl || '/images/hero-latte.png'}
-                  alt={hero.headline}
-                  className="h-full w-full object-contain drop-shadow-[0_20px_28px_rgba(31,42,38,0.16)]"
-                />
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="absolute -left-2 bottom-8 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-brand-mint/40 bg-white/95 px-4 py-2.5 shadow-soft backdrop-blur-sm"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-teal/15 text-brand-teal">
-                  <Coffee className="h-4 w-4" />
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-semibold text-brand-dark">
-                    {hero.floatingCard1Title}
-                  </p>
-                  <p className="text-[11px] text-brand-sage">
-                    {hero.floatingCard1Subtitle}
-                  </p>
+              {/* Animated Gliding Progress Pill Bar */}
+              {images.length > 1 && (
+                <div className="relative z-10 mt-6 flex items-center justify-center gap-2">
+                  {images.map((_, idx) => {
+                    const active = idx === activeCycleIndex;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => handleJump(idx)}
+                        aria-label={`Show hero photo set ${idx + 1}`}
+                        className={cn(
+                          'relative h-2 rounded-full transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]',
+                          active
+                            ? 'w-8 bg-brand-mint/45'
+                            : 'w-2 bg-brand-mint/55 hover:bg-brand-sage/75'
+                        )}
+                      >
+                        {active && (
+                          <motion.span
+                            layoutId="hero-cycle-pill"
+                            transition={{
+                              type: 'spring',
+                              stiffness: 300,
+                              damping: 26,
+                            }}
+                            className="absolute inset-0 rounded-full bg-brand-teal"
+                          />
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 16 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.65, duration: 0.5 }}
-                className="absolute -right-2 top-10 z-20 hidden sm:flex items-center gap-2.5 rounded-2xl border border-brand-mint/40 bg-white/95 px-4 py-2.5 shadow-soft backdrop-blur-sm"
-              >
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-brand-sage/15 text-brand-sage">
-                  <Flame className="h-4 w-4" />
-                </span>
-                <div className="text-left">
-                  <p className="text-xs font-semibold text-brand-dark">
-                    {hero.floatingCard2Title}
-                  </p>
-                  <p className="text-[11px] text-brand-sage">
-                    {hero.floatingCard2Subtitle}
-                  </p>
-                </div>
-              </motion.div>
+              )}
             </div>
           </motion.div>
         </div>

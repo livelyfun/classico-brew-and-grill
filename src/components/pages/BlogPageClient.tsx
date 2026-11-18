@@ -9,7 +9,6 @@ import {
   Calendar,
   Clock,
   Search,
-  Sparkles,
   User,
   X,
 } from 'lucide-react';
@@ -57,12 +56,11 @@ export function BlogPageClient({ posts }: BlogPageClientProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Page Hero Header */}
         <div className="text-center max-w-3xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-mint/40 bg-white/80 px-4 py-1.5 text-xs font-semibold text-brand-teal shadow-xs backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Classico Journal &amp; Stories</span>
-          </div>
+          <span className="block font-script text-3xl md:text-4xl text-brand-teal mb-2">
+            Classico Journal &amp; Stories
+          </span>
 
-          <h1 className="mt-4 font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark">
             Roastery Chronicles &amp; Ember Kitchen
           </h1>
 

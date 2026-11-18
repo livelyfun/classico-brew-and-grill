@@ -9,7 +9,6 @@ import {
   MessageCircleQuestion,
   Phone,
   Search,
-  Sparkles,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { FaqItem } from '@/types/cms';
@@ -58,12 +57,11 @@ export function FaqPageClient({ faqs }: FaqPageClientProps) {
       <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
         {/* Page Hero Header */}
         <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-2 rounded-full border border-brand-mint/40 bg-white/80 px-4 py-1.5 text-xs font-semibold text-brand-teal shadow-xs backdrop-blur-sm">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Answers &amp; Guest Inquiries</span>
-          </div>
+          <span className="block font-script text-3xl md:text-4xl text-brand-teal mb-2">
+            Answers &amp; Guest Inquiries
+          </span>
 
-          <h1 className="mt-4 font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark">
+          <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark">
             Frequently Asked Questions
           </h1>
 

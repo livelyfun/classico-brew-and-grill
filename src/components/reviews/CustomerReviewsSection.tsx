@@ -149,7 +149,7 @@ export function CustomerReviewsSection({
                   </div>
 
                   {/* Comment */}
-                  <blockquote className="mt-4 text-sm text-brand-dark/85 leading-relaxed italic">
+                  <blockquote className="mt-4 text-sm text-brand-dark/85 leading-relaxed">
                     &ldquo;{rev.comment}&rdquo;
                   </blockquote>
                 </div>

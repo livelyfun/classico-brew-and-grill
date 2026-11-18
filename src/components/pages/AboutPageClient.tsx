@@ -8,7 +8,6 @@ import {
   HeartHandshake,
   Leaf,
   Quote,
-  Sparkles,
 } from 'lucide-react';
 import { PageHero } from '@/components/ui/PageHero';
 import { Section } from '@/components/ui/Section';
@@ -64,23 +63,7 @@ export function AboutPageClient({
                 alt={content.storyHeadline}
                 className="h-[420px] w-full object-cover sm:h-[480px]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/50 via-transparent to-transparent" />
-            </div>
-
-            <div className="mt-6 flex items-center gap-4 rounded-2xl border border-brand-mint/40 bg-white p-4 shadow-soft sm:absolute sm:-bottom-6 sm:right-6 sm:mt-0 sm:max-w-xs">
-              <img
-                src="/images/logo.png"
-                alt="Classico Emblem"
-                className="h-14 w-14 shrink-0 object-contain"
-              />
-              <div>
-                <p className="font-heading text-base font-semibold text-brand-dark">
-                  {content.storyOverlayTitle}
-                </p>
-                <p className="text-xs text-brand-sage">
-                  {content.storyOverlaySubtitle}
-                </p>
-              </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 via-transparent to-transparent" />
             </div>
           </motion.div>
 
@@ -131,7 +114,7 @@ export function AboutPageClient({
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {(content.values ?? []).map((val, idx) => {
-            const Icon = iconMap[val.iconName] ?? Sparkles;
+            const Icon = iconMap[val.iconName] ?? Leaf;
             return (
               <motion.div
                 key={val.id}
@@ -181,8 +164,7 @@ export function AboutPageClient({
                 />
               </div>
               <div className="flex flex-col justify-center p-6 sm:p-8">
-                <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-brand-mint-light/50 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-brand-sage-dark">
-                  <Sparkles className="h-3 w-3 text-brand-teal" />
+                <span className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
                   {leader.specialty}
                 </span>
                 <h3 className="mt-3 font-heading text-2xl font-semibold text-brand-dark">
@@ -218,7 +200,7 @@ export function AboutPageClient({
                 className="rounded-2xl border border-white/15 bg-white/10 p-7 backdrop-blur-sm"
               >
                 <Quote className="h-7 w-7 text-brand-mint-light/70" />
-                <p className="mt-4 font-heading text-lg italic leading-relaxed text-white">
+                <p className="mt-4 font-heading text-lg leading-relaxed text-white">
                   “{item.quote}”
                 </p>
                 <div className="mt-5 border-t border-white/15 pt-4">

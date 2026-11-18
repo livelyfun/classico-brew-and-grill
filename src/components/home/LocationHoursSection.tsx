@@ -8,7 +8,6 @@ import {
   Mail,
   MapPin,
   Phone,
-  Sparkles,
 } from 'lucide-react';
 import { Section } from '@/components/ui/Section';
 import { SectionHeading } from '@/components/ui/SectionHeading';
@@ -128,12 +127,7 @@ export function LocationHoursSection({
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-sage/60 to-brand-sage/30" />
 
-          <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
-            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs backdrop-blur-md">
-              <Sparkles className="h-3.5 w-3.5 text-brand-mint-light" />
-              <span>Complimentary Valet After 5 PM</span>
-            </div>
-
+          <div className="absolute inset-0 flex flex-col justify-end p-8 sm:p-10">
             <div>
               <p className="font-script text-3xl text-brand-mint-light">
                 {settings.district}

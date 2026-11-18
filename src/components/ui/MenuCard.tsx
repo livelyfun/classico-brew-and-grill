@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Flame, Leaf, Sparkles } from 'lucide-react';
+import { Flame, Leaf } from 'lucide-react';
 import { MenuItem } from '@/types/cms';
 import { cn, formatPrice } from '@/lib/utils';
 
@@ -50,8 +50,7 @@ export function MenuCard({ item, index = 0 }: MenuCardProps) {
 
         {/* Featured Signature Marker */}
         {item.featured && (
-          <span className="absolute left-3.5 top-3.5 inline-flex items-center gap-1 rounded-full bg-brand-teal px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-sm">
-            <Sparkles className="h-3 w-3" />
+          <span className="absolute left-3.5 top-3.5 inline-flex items-center rounded-full bg-brand-teal px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white shadow-sm">
             Featured
           </span>
         )}

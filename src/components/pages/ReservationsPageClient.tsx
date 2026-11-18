@@ -7,7 +7,6 @@ import {
   CheckCircle2,
   Clock,
   MapPin,
-  Sparkles,
   Users,
 } from 'lucide-react';
 import { PageHero } from '@/components/ui/PageHero';
@@ -427,8 +426,7 @@ export function ReservationsPageClient({
             <aside className="lg:col-span-4">
               <div className="sticky top-24 space-y-6">
                 <div className="rounded-3xl border border-brand-mint/35 bg-brand-sage p-7 text-white shadow-elevated">
-                  <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-brand-mint-light">
-                    <Sparkles className="h-4 w-4" />
+                  <div className="text-xs font-semibold uppercase tracking-wider text-brand-mint-light">
                     <span>Reservation Summary</span>
                   </div>
 

@@ -228,6 +228,14 @@ export async function POST(request: NextRequest) {
 
     // 5. HERO & HOMEPAGE CONTENT
     else if (entity === 'hero' && id && action === 'update') {
+      const heroImages = Array.isArray(data.heroImages)
+        ? data.heroImages.map((u) => String(u).trim()).filter(Boolean)
+        : [];
+      const ctaObj =
+        data.ctaBanner && typeof data.ctaBanner === 'object'
+          ? (data.ctaBanner as Record<string, unknown>)
+          : {};
+
       await prisma.heroContent.update({
         where: { id },
         data: {
@@ -239,14 +247,14 @@ export async function POST(request: NextRequest) {
           primaryCtaHref: String(data.primaryCtaHref ?? ''),
           secondaryCtaLabel: String(data.secondaryCtaLabel ?? ''),
           secondaryCtaHref: String(data.secondaryCtaHref ?? ''),
-          heroImageUrl: String(data.heroImageUrl ?? ''),
+          heroImageUrl: heroImages[0] || String(data.heroImageUrl ?? ''),
           floatingCard1Title: String(data.floatingCard1Title ?? ''),
           floatingCard1Subtitle: String(data.floatingCard1Subtitle ?? ''),
           floatingCard2Title: String(data.floatingCard2Title ?? ''),
           floatingCard2Subtitle: String(data.floatingCard2Subtitle ?? ''),
           pillarsJson: (data.pillars ?? []) as object,
           signatureSplitJson: (data.signatureSplit ?? {}) as object,
-          ctaBannerJson: (data.ctaBanner ?? {}) as object,
+          ctaBannerJson: { ...ctaObj, heroImages } as object,
           published: Boolean(data.published ?? true),
         },
       });

@@ -379,7 +379,7 @@ export function AdminDashboardClient({
   const [itemForm, setItemForm] = useState({
     name: '',
     categoryId: initialBundle.categories[0]?.id ?? '',
-    price: '12.00',
+    price: '350',
     description: '',
     imageUrl: '',
     tags: ['Signature'] as string[],
@@ -518,7 +518,7 @@ export function AdminDashboardClient({
       setItemForm({
         name: '',
         categoryId: bundle.categories[0]?.id ?? '',
-        price: '12.00',
+        price: '350',
         description: '',
         imageUrl: '',
         tags: ['Signature'],
@@ -1105,7 +1105,7 @@ export function AdminDashboardClient({
                   setItemForm({
                     name: '',
                     categoryId: bundle.categories[0]?.id ?? '',
-                    price: '12.00',
+                    price: '350',
                     description: '',
                     imageUrl: '',
                     tags: ['Signature'],
@@ -1182,12 +1182,12 @@ export function AdminDashboardClient({
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-brand-dark">
-                      Price ($) *
+                      Price (Rs.) *
                     </label>
                     <input
                       required
                       type="number"
-                      step="0.25"
+                      step="any"
                       value={itemForm.price}
                       onChange={(e) =>
                         setItemForm({ ...itemForm, price: e.target.value })
@@ -1324,7 +1324,7 @@ export function AdminDashboardClient({
                         setItemForm({
                           name: '',
                           categoryId: bundle.categories[0]?.id ?? '',
-                          price: '12.00',
+                          price: '350',
                           description: '',
                           imageUrl: '',
                           tags: ['Signature'],

@@ -70,6 +70,15 @@ function mapSiteSettings(row: {
   };
 }
 
+export const DEFAULT_HERO_GRID_IMAGES = [
+  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80',
+  'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80',
+];
+
 function mapHeroContent(row: {
   id: string;
   badgeText: string;
@@ -96,7 +105,19 @@ function mapHeroContent(row: {
     description?: string;
     items?: SignatureSplitItem[];
   };
-  const cta = (row.ctaBannerJson ?? {}) as Partial<CtaBannerData>;
+  const ctaObj = (row.ctaBannerJson ?? {}) as Record<string, unknown>;
+  const cta = ctaObj as Partial<CtaBannerData>;
+
+  const rawHeroImages = Array.isArray(ctaObj.heroImages)
+    ? ctaObj.heroImages.map((u) => String(u).trim()).filter(Boolean)
+    : [];
+  const rowImage = row.heroImageUrl?.trim();
+  const cleanedImages =
+    rawHeroImages.length > 0
+      ? rawHeroImages
+      : rowImage && rowImage !== '/images/hero-latte.png'
+      ? [rowImage, ...DEFAULT_HERO_GRID_IMAGES]
+      : DEFAULT_HERO_GRID_IMAGES;
 
   return {
     id: row.id,
@@ -108,7 +129,8 @@ function mapHeroContent(row: {
     primaryCtaHref: row.primaryCtaHref,
     secondaryCtaLabel: row.secondaryCtaLabel,
     secondaryCtaHref: row.secondaryCtaHref,
-    heroImageUrl: row.heroImageUrl,
+    heroImageUrl: cleanedImages[0] || row.heroImageUrl,
+    heroImages: cleanedImages,
     floatingCard1Title: row.floatingCard1Title,
     floatingCard1Subtitle: row.floatingCard1Subtitle,
     floatingCard2Title: row.floatingCard2Title,

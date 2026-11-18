@@ -10,7 +10,6 @@ import {
   Leaf,
   Plus,
   Save,
-  Sparkles,
   Trash2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
@@ -48,6 +47,37 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
       </div>
     );
   }
+
+  const heroImages = form.heroImages?.length
+    ? form.heroImages
+    : [form.heroImageUrl].filter(Boolean);
+
+  const updateHeroImage = (index: number, url: string) => {
+    const next = [...heroImages];
+    next[index] = url;
+    setForm({
+      ...form,
+      heroImages: next,
+      heroImageUrl: next[0] || form.heroImageUrl,
+    });
+  };
+
+  const addHeroImage = () => {
+    setForm({
+      ...form,
+      heroImages: [...heroImages, ''],
+    });
+  };
+
+  const removeHeroImage = (index: number) => {
+    if (heroImages.length <= 1) return;
+    const next = heroImages.filter((_, i) => i !== index);
+    setForm({
+      ...form,
+      heroImages: next,
+      heroImageUrl: next[0] || '',
+    });
+  };
 
   const updatePillar = (index: number, patch: Partial<CraftPillar>) => {
     const next = [...form.pillars];
@@ -170,8 +200,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
       {/* SECTION 1: MAIN WELCOME BANNER */}
       <div className="rounded-3xl border border-brand-mint/45 bg-white p-6 shadow-soft sm:p-8 space-y-6">
         <div className="border-b border-brand-mint/25 pb-4">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-brand-teal/10 px-3 py-1 text-xs font-semibold text-brand-teal">
-            <Sparkles className="h-3 w-3" />
+          <span className="inline-flex items-center rounded-full bg-brand-teal/10 px-3 py-1 text-xs font-semibold text-brand-teal">
             Step 1
           </span>
           <h3 className="mt-2 font-heading text-2xl font-semibold text-brand-dark">
@@ -183,19 +212,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-          <div>
-            <label className={labelClass}>Small Top Tag</label>
-            <input
-              type="text"
-              value={form.badgeText}
-              onChange={(e) => setForm({ ...form, badgeText: e.target.value })}
-              placeholder="e.g. Botanical Roastery & Wood-Fired Kitchen"
-              className={inputClass}
-            />
-            <p className={hintClass}>Appears in a small pill above the main headline.</p>
-          </div>
-
-          <div>
+          <div className="sm:col-span-2">
             <label className={labelClass}>Cursive Script Greeting</label>
             <input
               type="text"
@@ -285,79 +302,56 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
           </div>
         </div>
 
-        <div className="border-t border-brand-mint/25 pt-5">
-          <CloudinaryImageInput
-            label="Main Welcome Photo"
-            helperText="Displayed on the right side of the welcome banner (for example, your signature latte cup)."
-            value={form.heroImageUrl}
-            onChange={(url) => setForm({ ...form, heroImageUrl: url })}
-          />
-        </div>
-
-        {/* Floating Highlight Badges on Photo */}
-        <div className="grid grid-cols-1 gap-4 rounded-2xl border border-brand-mint/35 bg-brand-bg/50 p-4 sm:grid-cols-2">
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
-              Photo Callout Badge 1
-            </p>
+        <div className="border-t border-brand-mint/25 pt-5 space-y-4">
+          <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-center">
             <div>
-              <label className="block text-xs font-medium text-brand-dark">
-                Title
-              </label>
-              <input
-                type="text"
-                value={form.floatingCard1Title}
-                onChange={(e) =>
-                  setForm({ ...form, floatingCard1Title: e.target.value })
-                }
-                className={inputClass}
-              />
+              <h4 className="text-sm font-semibold text-brand-dark">
+                Hero Grid Photos (Auto-Rotates Every 4 Seconds)
+              </h4>
+              <p className="text-xs text-brand-dark/60">
+                Add several photos below. On the public homepage, they appear in a 4-tile grid and cycle smoothly every 4 seconds.
+              </p>
             </div>
-            <div>
-              <label className="block text-xs font-medium text-brand-dark">
-                Subtitle
-              </label>
-              <input
-                type="text"
-                value={form.floatingCard1Subtitle}
-                onChange={(e) =>
-                  setForm({ ...form, floatingCard1Subtitle: e.target.value })
-                }
-                className={inputClass}
-              />
-            </div>
+            <button
+              type="button"
+              onClick={addHeroImage}
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-brand-teal/40 bg-brand-teal/10 px-3.5 py-2 text-xs font-semibold text-brand-teal transition-colors hover:bg-brand-teal hover:text-white"
+            >
+              <Plus className="h-3.5 w-3.5" />
+              <span>Add Another Photo</span>
+            </button>
           </div>
 
-          <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
-              Photo Callout Badge 2
-            </p>
-            <div>
-              <label className="block text-xs font-medium text-brand-dark">
-                Title
-              </label>
-              <input
-                type="text"
-                value={form.floatingCard2Title}
-                onChange={(e) =>
-                  setForm({ ...form, floatingCard2Title: e.target.value })
-                }
-                className={inputClass}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-brand-dark">
-                Subtitle
-              </label>
-              <input
-                type="text"
-                value={form.floatingCard2Subtitle}
-                onChange={(e) =>
-                  setForm({ ...form, floatingCard2Subtitle: e.target.value })
-                }
-                className={inputClass}
-              />
-            </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {heroImages.map((imgUrl, idx) => (
+              <div
+                key={idx}
+                className="rounded-2xl border border-brand-mint/40 bg-brand-bg/35 p-4 space-y-3"
+              >
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
+                    Grid Photo #{idx + 1}
+                  </span>
+                  {heroImages.length > 1 && (
+                    <button
+                      type="button"
+                      onClick={() => removeHeroImage(idx)}
+                      className="inline-flex items-center gap-1 rounded-lg px-2 py-1 text-xs font-medium text-red-600 hover:bg-red-50"
+                      title="Remove this photo"
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                      <span>Remove</span>
+                    </button>
+                  )}
+                </div>
+
+                <CloudinaryImageInput
+                  label={`Photo ${idx + 1}`}
+                  value={imgUrl}
+                  onChange={(url) => updateHeroImage(idx, url)}
+                />
+              </div>
+            ))}
           </div>
         </div>
 
@@ -705,21 +699,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
         </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-          <div>
-            <label className={labelClass}>Top Small Badge</label>
-            <input
-              type="text"
-              value={form.ctaBanner.badgeText}
-              onChange={(e) =>
-                setForm({
-                  ...form,
-                  ctaBanner: { ...form.ctaBanner, badgeText: e.target.value },
-                })
-              }
-              className={inputClass}
-            />
-          </div>
-          <div>
+          <div className="sm:col-span-2">
             <label className={labelClass}>Cursive Accent Text</label>
             <input
               type="text"

@@ -7,7 +7,6 @@ import {
   Coffee,
   Flame,
   Search,
-  Sparkles,
   UtensilsCrossed,
   X,
 } from 'lucide-react';
@@ -111,7 +110,10 @@ export function MenuPageClient({
         }
       />
 
-      <section className="sticky top-[64px] z-30 border-b border-brand-mint/35 bg-white/95 py-4 shadow-sm backdrop-blur-md">
+      <section
+        style={{ top: 'var(--navbar-offset, 69px)' }}
+        className="sticky z-30 border-b border-brand-mint/35 bg-white/95 py-4 shadow-sm backdrop-blur-md transition-[top,box-shadow,background-color] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-[top]"
+      >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 space-y-3.5">
           <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
             <button
@@ -274,11 +276,10 @@ export function MenuPageClient({
           <div className="rounded-3xl border border-brand-mint/40 bg-brand-sage p-8 text-white shadow-elevated sm:p-12">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12">
               <div className="lg:col-span-7">
-                <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3.5 py-1 text-xs font-medium text-brand-mint-light">
-                  <Sparkles className="h-3.5 w-3.5" />
-                  <span>{pairing.pairingBadge}</span>
-                </div>
-                <h2 className="mt-4 font-heading text-2xl sm:text-3xl font-semibold">
+                <p className="text-xs font-semibold uppercase tracking-widest text-brand-mint-light">
+                  {pairing.pairingBadge}
+                </p>
+                <h2 className="mt-3 font-heading text-2xl sm:text-3xl font-semibold">
                   {pairing.pairingTitle}
                 </h2>
                 <p className="mt-3 text-sm sm:text-base text-brand-mint-light/90 leading-relaxed">
