@@ -1,0 +1,161 @@
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import {
+  Clock,
+  ExternalLink,
+  Mail,
+  MapPin,
+  Phone,
+  Sparkles,
+} from 'lucide-react';
+import { Section } from '@/components/ui/Section';
+import { SectionHeading } from '@/components/ui/SectionHeading';
+import { Button } from '@/components/ui/Button';
+import { getSiteConfig } from '@/lib/cms';
+
+export function LocationHoursSection() {
+  const site = getSiteConfig();
+
+  return (
+    <Section tone="mintSoft" id="visit">
+      <SectionHeading
+        scriptLabel="Join Us"
+        title="Location & Opening Hours"
+        description="Nestled in the heart of Willow Creek Quarter. Walk-ins are always welcome at our espresso counter, while evening dining reservations are warmly recommended."
+      />
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.55 }}
+        className="mt-12 grid grid-cols-1 overflow-hidden rounded-3xl border border-brand-mint/40 bg-white shadow-elevated lg:grid-cols-12"
+      >
+        {/* Left: Opening Hours & Contact */}
+        <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12">
+          <div className="inline-flex items-center gap-2 rounded-full bg-brand-teal/10 px-3.5 py-1 text-xs font-semibold text-brand-teal">
+            <span className="h-2 w-2 rounded-full bg-brand-teal animate-pulse" />
+            <span>Open Daily • Roastery &amp; Grill</span>
+          </div>
+
+          <h3 className="mt-4 font-heading text-2xl sm:text-3xl font-semibold text-brand-dark">
+            Hours of Service
+          </h3>
+
+          <div className="mt-6 divide-y divide-brand-mint/30">
+            {site.openingHours.map((slot) => (
+              <div
+                key={slot.days}
+                className="flex flex-col justify-between gap-1 py-4 sm:flex-row sm:items-center"
+              >
+                <div>
+                  <p className="font-medium text-brand-dark">{slot.days}</p>
+                  {slot.note && (
+                    <p className="text-xs text-brand-sage mt-0.5">{slot.note}</p>
+                  )}
+                </div>
+                <div className="flex items-center gap-2 font-semibold text-brand-teal text-sm sm:text-base">
+                  <Clock className="h-4 w-4 shrink-0" />
+                  <span>{slot.hours}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 grid grid-cols-1 gap-4 rounded-2xl bg-brand-bg p-5 sm:grid-cols-2">
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand-teal" />
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
+                  Address
+                </p>
+                <p className="mt-1 text-sm text-brand-dark">
+                  {site.address.street}
+                  <br />
+                  {site.address.city}
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-2.5">
+              <div className="flex items-center gap-3 text-sm">
+                <Phone className="h-4 w-4 shrink-0 text-brand-teal" />
+                <a
+                  href={`tel:${site.contact.phone}`}
+                  className="font-medium text-brand-dark hover:text-brand-teal"
+                >
+                  {site.contact.phone}
+                </a>
+              </div>
+              <div className="flex items-center gap-3 text-sm">
+                <Mail className="h-4 w-4 shrink-0 text-brand-teal" />
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="text-brand-dark/80 hover:text-brand-teal truncate"
+                >
+                  {site.contact.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Button
+              href="/contact"
+              variant="outline"
+              size="md"
+              rightIcon={<ExternalLink className="h-4 w-4" />}
+            >
+              Contact &amp; Map Details
+            </Button>
+            <Button href="/reservations" variant="primary" size="md">
+              Reserve Your Table
+            </Button>
+          </div>
+        </div>
+
+        {/* Right: Botanical Address Visual Card */}
+        <div className="relative min-h-[320px] bg-brand-sage text-white lg:col-span-5">
+          <img
+            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
+            alt="Classico Garden Terrace Seating"
+            loading="lazy"
+            className="h-full w-full object-cover opacity-80"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-sage/60 to-brand-sage/30" />
+
+          <div className="absolute inset-0 flex flex-col justify-between p-8 sm:p-10">
+            <div className="inline-flex w-fit items-center gap-2 rounded-full border border-white/25 bg-white/10 px-3.5 py-1.5 text-xs backdrop-blur-md">
+              <Sparkles className="h-3.5 w-3.5 text-brand-mint-light" />
+              <span>Complimentary Valet After 5 PM</span>
+            </div>
+
+            <div>
+              <p className="font-script text-3xl text-brand-mint-light">
+                Willow Creek Quarter
+              </p>
+              <h4 className="mt-1 font-heading text-2xl font-semibold text-white">
+                428 Botanical Promenade
+              </h4>
+              <p className="mt-2 text-sm text-brand-mint-light/90">
+                Two blocks from the Botanical Conservatory gardens, with covered patio seating all year round.
+              </p>
+
+              <a
+                href={site.address.mapsQueryUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-5 inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-brand-dark shadow-md transition-colors hover:bg-brand-teal hover:text-white"
+              >
+                <span>Get Directions</span>
+                <ExternalLink className="h-3.5 w-3.5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </Section>
+  );
+}
