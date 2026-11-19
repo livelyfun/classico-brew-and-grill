@@ -9,119 +9,121 @@ interface SeedGalleryItem {
 
 export const galleryCategories = [
   { key: 'all', label: 'All Moments' },
-  { key: 'atmosphere', label: 'Atmosphere & Interior' },
+  { key: 'atmosphere', label: 'Atmosphere & Garden' },
   { key: 'brews', label: 'Coffee & Brews' },
-  { key: 'grill', label: 'Wood-Fired Grill' },
-  { key: 'desserts', label: 'Desserts & Drinks' },
+  { key: 'grill', label: 'Grill & Kitchen' },
+  { key: 'desserts', label: 'Drinks & Refreshers' },
 ] as const;
 
 export const galleryItems: SeedGalleryItem[] = [
   {
     id: 'gal-1',
-    title: 'The Botanical Conservatory',
-    caption: 'Sunlit mornings beneath indoor olive canopies and soft sage seating.',
+    title: 'Illuminated Mezzanine & Evening Bar',
+    caption:
+      'Our two-story mezzanine deck and ground-floor bar glowing warmly at dusk.',
     category: 'atmosphere',
     image:
-      'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
     aspect: 'landscape',
   },
   {
     id: 'gal-2',
-    title: 'Precision Latte Art',
-    caption: 'Our signature espresso textured to velvet micro-foam each morning.',
-    category: 'brews',
+    title: 'Restro Garden at Blue Hour',
+    caption:
+      'Lantern-lit pergola seating and open stone courtyard framed by greenery.',
+    category: 'atmosphere',
     image:
-      'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80',
-    aspect: 'portrait',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069462/classico-brew-and-grill/garden-evening.jpg',
+    aspect: 'landscape',
   },
   {
     id: 'gal-3',
-    title: 'White-Oak Hearth Ribeye',
-    caption: '28-day dry-aged prime beef seared over aromatic hardwood flames.',
-    category: 'grill',
-    image:
-      'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-4',
-    title: 'Candlelit Evening Sanctuary',
-    caption: 'Intimate tables set for unhurried dinners and warm conversations.',
-    category: 'atmosphere',
-    image:
-      'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-5',
-    title: 'Single-Origin Pour Over',
-    caption: 'Hand-brewed Ethiopian harvests highlighting delicate jasmine aromatics.',
+    title: 'La Cimbali Espresso Craft',
+    caption:
+      'Fresh double-shot espresso with rich golden crema pulled to order from 7:30 AM.',
     category: 'brews',
     image:
-      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
     aspect: 'square',
   },
   {
-    id: 'gal-6',
-    title: 'Botanical Garden Spritzes',
-    caption: 'Fresh cucumber, rosemary, and citrus elixirs crafted at our bar.',
-    category: 'desserts',
+    id: 'gal-4',
+    title: 'Shaded Garden Sofa Lounge',
+    caption:
+      'Breezy cushioned seating beneath colorful prayer flags and hanging lamps.',
+    category: 'atmosphere',
     image:
-      'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=1000&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069463/classico-brew-and-grill/garden-lounge-day.jpg',
+    aspect: 'portrait',
+  },
+  {
+    id: 'gal-5',
+    title: 'Morning Cappuccino & Americano',
+    caption:
+      'Silky micro-foam latte art paired with bold black coffee at our outdoor tables.',
+    category: 'brews',
+    image:
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069454/classico-brew-and-grill/cappuccino-americano-duo.jpg',
+    aspect: 'landscape',
+  },
+  {
+    id: 'gal-6',
+    title: 'Airport Road Entrance & Signage',
+    caption:
+      'Welcome to Classico — Coffee House, Restro Garden & Bed & Breakfast in Biratnagar-4.',
+    category: 'atmosphere',
+    image:
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069461/classico-brew-and-grill/exterior-storefront.jpg',
     aspect: 'portrait',
   },
   {
     id: 'gal-7',
-    title: 'Cedar-Seared Coastal Salmon',
-    caption: 'Wild salmon finished with Meyer lemon, dill oil, and blistered tomatoes.',
+    title: 'Grilled Club Sandwich & Fries',
+    caption:
+      'Toasted multi-layer sandwich triangles plated with crisp fries and signature dip.',
     category: 'grill',
     image:
-      'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069457/classico-brew-and-grill/club-sandwich-fries.jpg',
     aspect: 'square',
   },
   {
     id: 'gal-8',
-    title: 'Espresso Tiramisu & Pastry Counter',
-    caption: 'Handcrafted Italian-inspired desserts dusted with rich dark cacao.',
-    category: 'desserts',
-    image:
-      'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1000&q=80',
-    aspect: 'square',
-  },
-  {
-    id: 'gal-9',
-    title: 'The Morning Espresso Bar',
-    caption: 'Where our head baristas dial in fresh roasts from 7:30 AM daily.',
-    category: 'brews',
-    image:
-      'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-10',
-    title: 'Live-Fire Kitchen Craft',
-    caption: 'Chef Marco finishing hearth-roasted dishes with fresh herb infusions.',
+    title: 'Spiced Nepali Chatpate Bowl',
+    caption:
+      'Crispy puffed rice tossed with tomatoes, fresh cilantro, and house spices.',
     category: 'grill',
     image:
-      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80',
-    aspect: 'landscape',
-  },
-  {
-    id: 'gal-11',
-    title: 'Covered Garden Terrace',
-    caption: 'Dappled daylight and warm evening lanterns on the stone courtyard.',
-    category: 'atmosphere',
-    image:
-      'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069456/classico-brew-and-grill/chatpate-sadeko.jpg',
     aspect: 'portrait',
   },
   {
-    id: 'gal-12',
-    title: 'Basque Burnt Cheesecake',
-    caption: 'Caramelized vanilla bean cheesecake served with macerated berries.',
+    id: 'gal-9',
+    title: 'Chilled Iced Lemon Mint Tea',
+    caption:
+      'Golden brewed iced tea finished with fresh mint leaves on the upper terrace.',
     category: 'desserts',
     image:
-      'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=1000&q=80',
-    aspect: 'square',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069464/classico-brew-and-grill/iced-mint-tea.jpg',
+    aspect: 'portrait',
+  },
+  {
+    id: 'gal-10',
+    title: 'Sunlit Courtyard Overview',
+    caption:
+      'Spacious outdoor seating surrounded by potted palms, trees, and shaded booths.',
+    category: 'atmosphere',
+    image:
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069459/classico-brew-and-grill/courtyard-overview.jpg',
+    aspect: 'portrait',
+  },
+  {
+    id: 'gal-11',
+    title: 'Upper Terrace Sunset View',
+    caption:
+      'Golden-hour skies and dedicated covered guest parking viewed from the mezzanine deck.',
+    category: 'atmosphere',
+    image:
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069453/classico-brew-and-grill/balcony-sunset-view.jpg',
+    aspect: 'landscape',
   },
 ];

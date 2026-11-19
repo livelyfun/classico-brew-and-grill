@@ -306,24 +306,24 @@ export function SettingsVisualTab({
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div>
-            <label className={labelClass}>Morning Roastery Summary</label>
+            <label className={labelClass}>Coffee House Hours Summary</label>
             <input
               type="text"
               value={form.roasteryHours}
               onChange={(e) =>
                 setForm({ ...form, roasteryHours: e.target.value })
               }
-              placeholder="e.g. Daily 7:30 AM – 3:00 PM"
+              placeholder="e.g. Daily: 7:30 AM – 10:00 PM"
               className={inputClass}
             />
           </div>
           <div>
-            <label className={labelClass}>Evening Grill Summary</label>
+            <label className={labelClass}>Restro Garden Grill Hours Summary</label>
             <input
               type="text"
               value={form.grillHours}
               onChange={(e) => setForm({ ...form, grillHours: e.target.value })}
-              placeholder="e.g. Daily 11:30 AM – 10:30 PM"
+              placeholder="e.g. Daily: 11:00 AM – 10:00 PM"
               className={inputClass}
             />
           </div>

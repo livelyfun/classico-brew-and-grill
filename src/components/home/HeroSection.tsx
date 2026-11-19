@@ -14,12 +14,12 @@ import { HeroContentData } from '@/types/cms';
 import { cn } from '@/lib/utils';
 
 const fallbackGridImages = [
-  'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80',
-  'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069462/classico-brew-and-grill/garden-evening.jpg',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069454/classico-brew-and-grill/cappuccino-americano-duo.jpg',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069463/classico-brew-and-grill/garden-lounge-day.jpg',
+  'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069456/classico-brew-and-grill/chatpate-sadeko.jpg',
 ];
 
 const silkEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
@@ -254,7 +254,7 @@ export function HeroSection({ hero }: { hero: HeroContentData }) {
                   images={images}
                   activeIdx={step % images.length}
                   prevIdx={prevStep % images.length}
-                  alt={`${hero.headline} — Artisanal Brews & Atmosphere`}
+                  alt={`${hero.headline} — Coffee House & Espresso Bar`}
                   className="h-44 sm:h-56"
                   waveDelay={0}
                 />
@@ -264,7 +264,7 @@ export function HeroSection({ hero }: { hero: HeroContentData }) {
                   images={images}
                   activeIdx={(step + 1) % images.length}
                   prevIdx={(prevStep + 1) % images.length}
-                  alt={`${hero.headline} — Wood-Fired Grill & Dining`}
+                  alt={`${hero.headline} — Restro Garden & Mezzanine`}
                   className="h-40 sm:mt-8 sm:h-48"
                   waveDelay={0.16}
                 />
@@ -274,7 +274,7 @@ export function HeroSection({ hero }: { hero: HeroContentData }) {
                   images={images}
                   activeIdx={(step + 2) % images.length}
                   prevIdx={(prevStep + 2) % images.length}
-                  alt={`${hero.headline} — Botanical Conservatory`}
+                  alt={`${hero.headline} — Restro Garden Courtyard`}
                   className="h-40 sm:h-48"
                   waveDelay={0.48}
                 />

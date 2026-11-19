@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: `Frequently Asked Questions | ${brandName}`,
     description:
-      'Answers to common guest questions regarding reservations, wood-fired hearth dining, dietary accommodations, and our specialty coffee roastery.',
+      'Answers to common guest questions about Classico Brew & Grill on Airport Road, Biratnagar — opening hours, seating areas, parking, food, and coffee.',
   };
 }
 

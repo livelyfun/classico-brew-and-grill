@@ -11,9 +11,9 @@ import { GalleryItem } from '@/types/cms';
 
 export function AtmospherePreview({
   photos,
-  scriptLabel = 'The Sanctuary',
-  title = 'Atmosphere & Conservatory Glimpses',
-  description = 'Soft sage banquettes, warm oak tables, indoor olive greenery, and the ambient glow of the open hearth.',
+  scriptLabel = 'The Restro Garden',
+  title = 'Atmosphere, Coffee & Courtyard Glimpses',
+  description = 'Illuminated evening mezzanine decks, shaded garden sofas beneath prayer flags, La Cimbali espresso shots, and fresh kitchen plates.',
 }: {
   photos: GalleryItem[];
   scriptLabel?: string;

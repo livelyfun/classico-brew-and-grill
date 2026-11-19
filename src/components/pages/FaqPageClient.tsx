@@ -66,7 +66,7 @@ export function FaqPageClient({ faqs }: FaqPageClientProps) {
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-brand-dark/75 leading-relaxed">
-            Everything you need to know about our reservation guidelines, hearth kitchen dietary options, roastery sourcing, and private gatherings.
+            Everything you need to know about our Airport Road location, opening hours, seating areas, coffee house, and group gatherings in Biratnagar.
           </p>
         </div>
 

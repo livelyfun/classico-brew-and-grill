@@ -9,11 +9,11 @@ export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Classico Brew & Grill | Artisanal Coffee & Wood-Fired Kitchen',
+    default: 'Classico Brew & Grill | Coffee House, Restro Garden & Grill — Biratnagar',
     template: '%s | Classico Brew & Grill',
   },
   description:
-    'A serene botanical café and open-hearth grill. Specialty single-origin brews by morning, wood-fired culinary craft into the evening.',
+    'Coffee House, Restro Garden & Grill on Airport Road, Biratnagar-4, Nepal. Fresh La Cimbali espresso from 7:30 AM, evening grill specials, and open-air courtyard dining.',
 };
 
 export default async function RootLayout({

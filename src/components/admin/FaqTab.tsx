@@ -136,7 +136,7 @@ export function FaqTab({ faqs, onMutate, busy }: FaqTabProps) {
             Manage Frequently Asked Questions
           </h2>
           <p className="text-xs sm:text-sm text-brand-dark/70">
-            Keep guest inquiries answered on policies, dining, roastery practices, and reservations.
+            Keep guest inquiries answered on location, opening hours, dining, coffee house, and reservations.
           </p>
         </div>
 

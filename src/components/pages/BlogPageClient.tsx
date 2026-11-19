@@ -61,11 +61,11 @@ export function BlogPageClient({ posts }: BlogPageClientProps) {
           </span>
 
           <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-brand-dark">
-            Roastery Chronicles &amp; Ember Kitchen
+            Coffee House Chronicles &amp; Garden Kitchen
           </h1>
 
           <p className="mt-4 text-base sm:text-lg text-brand-dark/75 leading-relaxed">
-            Reflections from our roasters, hearth chefs, and beverage artisans. Discover brew recipes, origin journeys, and the philosophy behind slow hospitality.
+            Stories from our Airport Road coffee house, restro garden evenings, espresso craft, and seasonal kitchen favorites in Biratnagar.
           </p>
         </div>
 

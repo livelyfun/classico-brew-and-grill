@@ -220,7 +220,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
               onChange={(e) =>
                 setForm({ ...form, scriptAccent: e.target.value })
               }
-              placeholder="e.g. Crafted with Calm & Ember"
+              placeholder="e.g. Welcome to Classico, Biratnagar"
               className={inputClass}
             />
             <p className={hintClass}>Displayed in elegant handwritten style.</p>
@@ -232,7 +232,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
               type="text"
               value={form.headline}
               onChange={(e) => setForm({ ...form, headline: e.target.value })}
-              placeholder="e.g. Where Artisanal Roasts Meet the Open Flame"
+              placeholder="e.g. Where Fresh Brews Meet the Restro Garden"
               className={inputClass}
             />
           </div>
@@ -363,7 +363,7 @@ export function HeroHomeTab({ hero, onSave, busy }: HeroHomeTabProps) {
                 Quick Highlights Row (Under Buttons)
               </h4>
               <p className="text-xs text-brand-dark/60">
-                Up to 3 short facts like Roastery hours, Grill style, and Neighborhood.
+                Up to 3 short facts like Coffee House hours, Grill style, and Neighborhood.
               </p>
             </div>
             <button

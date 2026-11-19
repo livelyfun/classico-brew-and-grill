@@ -10,10 +10,10 @@ import { cn } from '@/lib/utils';
 
 const galleryCategories = [
   { key: 'all', label: 'All Moments' },
-  { key: 'atmosphere', label: 'Atmosphere & Interior' },
+  { key: 'atmosphere', label: 'Atmosphere & Garden' },
   { key: 'brews', label: 'Coffee & Brews' },
-  { key: 'grill', label: 'Wood-Fired Grill' },
-  { key: 'desserts', label: 'Desserts & Drinks' },
+  { key: 'grill', label: 'Grill & Kitchen' },
+  { key: 'desserts', label: 'Drinks & Refreshers' },
 ];
 
 export function GalleryPageClient({
@@ -51,7 +51,7 @@ export function GalleryPageClient({
         title={pageSection?.title || 'Moments at Classico'}
         description={
           pageSection?.description ||
-          'Step inside our botanical conservatory, espresso bar, and glowing white-oak hearth.'
+          'Step inside our Airport Road coffee house, shaded restro garden, and illuminated mezzanine deck.'
         }
       />
 

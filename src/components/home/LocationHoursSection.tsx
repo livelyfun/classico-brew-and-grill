@@ -26,7 +26,7 @@ export function LocationHoursSection({
       <SectionHeading
         scriptLabel="Join Us"
         title="Location & Opening Hours"
-        description={`Nestled in the heart of ${settings.district}. Walk-ins are always welcome at our espresso counter, while evening dining reservations are warmly recommended.`}
+        description={`Situated near Biratnagar Airport in ${settings.district}. Walk-ins are always welcome at our Coffee House, and evening Restro Garden table reservations are warmly recommended.`}
       />
 
       <motion.div
@@ -39,7 +39,7 @@ export function LocationHoursSection({
         <div className="p-8 sm:p-10 lg:col-span-7 lg:p-12">
           <div className="inline-flex items-center gap-2 rounded-full bg-brand-teal/10 px-3.5 py-1 text-xs font-semibold text-brand-teal">
             <span className="h-2 w-2 rounded-full bg-brand-teal animate-pulse" />
-            <span>Open Daily • Roastery &amp; Grill</span>
+            <span>Open Daily • Coffee House &amp; Restro Garden</span>
           </div>
 
           <h3 className="mt-4 font-heading text-2xl sm:text-3xl font-semibold text-brand-dark">
@@ -120,10 +120,10 @@ export function LocationHoursSection({
 
         <div className="relative min-h-[320px] bg-brand-sage text-white lg:col-span-5">
           <img
-            src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1000&q=80"
-            alt="Garden Terrace Seating"
+            src="https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069461/classico-brew-and-grill/exterior-storefront.jpg"
+            alt="Classico Brew & Grill Airport Road Storefront"
             loading="lazy"
-            className="h-full w-full object-cover opacity-80"
+            className="h-full w-full object-cover opacity-85"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand-sage/60 to-brand-sage/30" />
 
@@ -136,7 +136,7 @@ export function LocationHoursSection({
                 {settings.street}
               </h4>
               <p className="mt-2 text-sm text-brand-mint-light/90">
-                {settings.city} — Year-round covered conservatory and courtyard dining.
+                {settings.city} — Near Biratnagar Airport • Coffee House, Restro Garden &amp; Evening Grill.
               </p>
 
               <a

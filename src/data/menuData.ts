@@ -24,49 +24,49 @@ export const menuCategories: SeedMenuCategory[] = [
     id: 'cat-coffee',
     slug: 'coffee-brews',
     name: 'Coffee & Brews',
-    scriptLabel: 'Morning & All-Day Roastery',
+    scriptLabel: 'Morning & All-Day Coffee House',
     description:
-      'Small-batch single-origin beans, botanical house syrups, and slow-steeped cold brews pulled to order.',
+      'Freshly pulled espresso, hand-textured cappuccinos, and classic brews prepared on our Italian La Cimbali M23 UP.',
   },
   {
     id: 'cat-grill',
     slug: 'grill',
-    name: 'Grill',
-    scriptLabel: 'From the White-Oak Hearth',
+    name: 'Grill & Eve Specials',
+    scriptLabel: 'From the Grill & Specials Board',
     description:
-      'Pasture-raised cuts and sustainable seafood kissed by glowing hardwood embers and herb-infused butter.',
+      'House evening grill favorites including Mutton Cheese Finger, Chicken Khumbi, Singapore Mushroom, and Stuffed Grill Paneer.',
   },
   {
     id: 'cat-mains',
     slug: 'mains',
-    name: 'Mains',
-    scriptLabel: 'Kitchen Classics',
+    name: 'Mains & Café Classics',
+    scriptLabel: 'All-Day Kitchen Favorites',
     description:
-      'Thoughtfully composed plates celebrating seasonal market produce, handmade pasta, and coastal flavors.',
+      'Grilled club sandwiches, classic Nepali momos, stone-baked pizzas, and hearty platters made fresh to order.',
   },
   {
     id: 'cat-sides',
     slug: 'sides',
-    name: 'Sides',
-    scriptLabel: 'Shared Accompaniments',
+    name: 'Sides & Quick Bites',
+    scriptLabel: 'Shareable Garden Plates',
     description:
-      'Wood-roasted vegetables, artisan breads, and crisp golden accompaniments crafted for the table.',
-  },
-  {
-    id: 'cat-desserts',
-    slug: 'desserts',
-    name: 'Desserts',
-    scriptLabel: 'Sweet Finales',
-    description:
-      'House-baked pastries, espresso-soaked classics, and warm delicacies designed to linger over.',
+      'Tangy spiced chatpate, crisp golden fries, and café bites made for unhurried table conversations.',
   },
   {
     id: 'cat-drinks',
     slug: 'drinks',
-    name: 'Drinks',
-    scriptLabel: 'Botanical Elixirs & Refreshers',
+    name: 'Drinks & Bar Specials',
+    scriptLabel: 'Iced Teas, Mocktails & Cocktails',
     description:
-      'Zero-proof garden spritzes, cold-pressed juices, and aromatic house sodas crafted with fresh herbs.',
+      'Chilled iced mint tea, house-crafted Devil Mojito mocktails, and signature bar cocktails poured every evening.',
+  },
+  {
+    id: 'cat-desserts',
+    slug: 'desserts',
+    name: 'Desserts & Sweets',
+    scriptLabel: 'Sweet Finales',
+    description:
+      'Warm baked treats and classic café desserts designed to pair effortlessly with freshly brewed espresso.',
   },
 ];
 
@@ -74,334 +74,312 @@ export const menuItems: SeedMenuItem[] = [
   // 1. COFFEE & BREWS
   {
     id: 'cb-1',
-    slug: 'pistachio-sage-latte',
-    name: 'Classico Pistachio Sage Latte',
+    slug: 'double-shot-espresso',
+    name: 'Double Shot Espresso',
     category: 'coffee-brews',
-    price: 6.75,
+    price: 180,
     description:
-      'Double-shot house espresso steamed with silky oat or whole milk, roasted Sicilian pistachio cream, and garden sage syrup.',
+      'Rich, aromatic double espresso extracted fresh on our La Cimbali M23 UP machine with a thick golden crema.',
     image:
-      'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=900&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
     featured: true,
-    tags: ['Signature', 'Vegetarian'],
-    pairingNote: 'Pairs wonderfully with Almond Croissant or Basque Cheesecake',
+    tags: ['Signature', 'Vegan', 'Gluten-Free'],
+    pairingNote: 'Available from 7:30 AM daily in our Airport Road Coffee House',
   },
   {
     id: 'cb-2',
-    slug: 'ethiopian-yirgacheffe-pourover',
-    name: 'Ethiopian Yirgacheffe Pour-Over',
+    slug: 'signature-cappuccino',
+    name: 'Signature Cappuccino',
     category: 'coffee-brews',
-    price: 6.25,
+    price: 260,
     description:
-      'Hand-poured V60 single origin highlighting bright bergamot, jasmine blossom, and honeyed stone-fruit clarity.',
+      'Fresh double espresso balanced with steamed milk and silky latte-art micro-foam served warm in classic porcelain.',
     image:
-      'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069455/classico-brew-and-grill/cappuccino-closeup.jpg',
+    featured: true,
+    tags: ['Signature', 'Vegetarian'],
+    pairingNote: 'Pairs wonderfully with Grilled Club Sandwich or Warm Brownie',
+  },
+  {
+    id: 'cb-3',
+    slug: 'classic-americano',
+    name: 'Classic Americano',
+    category: 'coffee-brews',
+    price: 210,
+    description:
+      'Bold double espresso lengthened with hot filtered water, crowned with natural golden espresso crema.',
+    image:
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069452/classico-brew-and-grill/americano-closeup.jpg',
     featured: true,
     tags: ['Single Origin', 'Vegan', 'Gluten-Free'],
   },
   {
-    id: 'cb-3',
-    slug: 'rosemary-cold-brew-tonic',
-    name: 'Rosemary Cold Brew Tonic',
-    category: 'coffee-brews',
-    price: 6.50,
-    description:
-      '18-hour slow-steeped Colombian cold brew layered over artisanal quinine tonic, charred rosemary sprig, and expressed grapefruit peel.',
-    image:
-      'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=900&q=80',
-    tags: ['Signature', 'Vegan', 'Gluten-Free'],
-  },
-  {
     id: 'cb-4',
-    slug: 'ceremonial-matcha-cloud',
-    name: 'Ceremonial Uji Matcha Cloud',
+    slug: 'creamy-cafe-latte',
+    name: 'Creamy Café Latte',
     category: 'coffee-brews',
-    price: 6.95,
+    price: 280,
     description:
-      'First-harvest stone-ground Uji matcha whisked over chilled milk and crowned with lightly salted vanilla botanical foam.',
+      'Smooth espresso folded into lightly textured steamed milk for an easygoing morning or afternoon cup.',
     image:
-      'https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=900&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069454/classico-brew-and-grill/cappuccino-americano-duo.jpg',
     tags: ['Vegetarian', 'Gluten-Free'],
   },
   {
     id: 'cb-5',
-    slug: 'smoked-maple-cortado',
-    name: 'Smoked Maple Espresso Cortado',
+    slug: 'iced-black-americano',
+    name: 'Iced Black Americano',
     category: 'coffee-brews',
-    price: 5.50,
+    price: 230,
     description:
-      'Equal parts ristretto espresso and velvety micro-foam kissed with barrel-aged Vermont maple and sea salt.',
+      'Double espresso poured over crystal ice and chilled spring water—crisp, smooth, and refreshing on warm afternoons.',
     image:
-      'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegetarian', 'Gluten-Free'],
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069452/classico-brew-and-grill/americano-closeup.jpg',
+    tags: ['Vegan', 'Gluten-Free'],
   },
 
-  // 2. GRILL
+  // 2. GRILL & EVE SPECIALS (Includes Classico Chalkboard Specials)
   {
     id: 'gr-1',
-    slug: 'wood-fired-prime-ribeye',
-    name: 'Wood-Fired Prime Ribeye (12oz)',
+    slug: 'mutton-cheese-finger',
+    name: 'Mutton Cheese Finger',
     category: 'grill',
-    price: 42.00,
+    price: 520,
     description:
-      '28-day dry-aged pasture-raised ribeye seared over white oak embers, finished with roasted garlic, thyme, and cultured sea-salt butter.',
+      'House Eve Special: spiced minced mutton rolled around melted cheese, seared crisp and served hot with house dip.',
     image:
       'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-    tags: ['Signature', 'Wood-Fired', 'Gluten-Free'],
-    pairingNote: 'Recommended with Creamed Spinach & Charred Broccolini',
+    tags: ['Signature', 'Wood-Fired'],
+    pairingNote: 'Featured on Classico’s Evening Specials Board',
   },
   {
     id: 'gr-2',
-    slug: 'chargrilled-atlantic-salmon',
-    name: 'Cedar-Seared Atlantic Salmon',
+    slug: 'chicken-khumbi',
+    name: 'Chicken Khumbi',
     category: 'grill',
-    price: 31.00,
+    price: 450,
     description:
-      'Crisp-skin Atlantic salmon grilled over aromatic cedar and applewood, served with preserved lemon, dill oil, and blistered heirloom tomatoes.',
+      'House Eve Special: tender marinated chicken seared with button mushrooms, cracked black pepper, garlic, and herbs.',
     image:
-      'https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-    tags: ['Wood-Fired', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=80',
+    tags: ['Signature', 'Gluten-Free'],
   },
   {
     id: 'gr-3',
-    slug: 'herb-crusted-lamb-rack',
-    name: 'Herb-Crusted Lamb Cutlets',
+    slug: 'singapore-mushroom',
+    name: 'Singapore Mushroom',
     category: 'grill',
-    price: 38.00,
+    price: 360,
     description:
-      'Tender rack of lamb crusted with rosemary, mint, and Dijon mustard, flame-kissed to medium-rare with roasted shallot jus.',
+      'House Eve Special: wok-seared mushrooms tossed in a savory, spiced aromatic glaze with peppers and scallions.',
     image:
-      'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80',
-    tags: ['Signature', 'Wood-Fired'],
+      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
+    tags: ['Vegetarian'],
   },
   {
     id: 'gr-4',
-    slug: 'smoked-peri-peri-half-chicken',
-    name: 'Hearth-Roasted Lemon Herb Chicken',
+    slug: 'stuffed-grill-paneer',
+    name: 'Stuffed Grill Paneer',
     category: 'grill',
-    price: 26.50,
+    price: 420,
     description:
-      'Free-range half chicken brined for 24 hours in citrus and oregano, slow-charred under brick with roasted garlic pan drippings.',
+      'House Eve Special: soft cottage cheese slabs layered with spiced herb filling and chargrilled golden to order.',
     image:
-      'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=80',
-    tags: ['Wood-Fired', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=900&q=80',
+    tags: ['Signature', 'Wood-Fired', 'Vegetarian', 'Gluten-Free'],
   },
   {
     id: 'gr-5',
-    slug: 'charred-cauliflower-steak',
-    name: 'Harissa & Chimichurri Cauliflower Steak',
+    slug: 'chargrilled-chicken-bbq-platter',
+    name: 'Chargrilled Chicken BBQ Platter',
     category: 'grill',
-    price: 22.00,
+    price: 650,
     description:
-      'Thick-cut heirloom cauliflower seared on the open hearth, glazed with smoky rose harissa over whipped tahini and herb chimichurri.',
+      'Smoky marinated chicken cuts grilled over high heat with charred bell peppers, onions, and mint-coriander chutney.',
     image:
-      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=80',
-    tags: ['Wood-Fired', 'Vegan', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1558030006-450675393462?auto=format&fit=crop&w=900&q=80',
+    tags: ['Wood-Fired', 'Gluten-Free'],
   },
 
-  // 3. MAINS
+  // 3. MAINS & CAFÉ CLASSICS
   {
     id: 'mn-1',
-    slug: 'wild-mushroom-truffle-risotto',
-    name: 'Wild Mushroom & Black Truffle Risotto',
+    slug: 'grilled-club-sandwich-fries',
+    name: 'Grilled Club Sandwich & Fries',
     category: 'mains',
-    price: 27.00,
+    price: 380,
     description:
-      'Acquerello Carnaroli rice slowly simmered in roasted porcini broth with chanterelles, aged Parmigiano-Reggiano, and fresh thyme.',
+      'Golden-toasted sandwich triangles layered with seasoned vegetables, tomatoes, and creamy filling, served with fries and house sauce.',
     image:
-      'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=900&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069457/classico-brew-and-grill/club-sandwich-fries.jpg',
     featured: true,
-    tags: ['Signature', 'Vegetarian', 'Gluten-Free'],
+    tags: ['Signature'],
+    pairingNote: 'Pairs smoothly with Signature Cappuccino or Iced Lemon Mint Tea',
   },
   {
     id: 'mn-2',
-    slug: 'braised-short-rib-pappardelle',
-    name: 'Braised Short Rib Pappardelle',
+    slug: 'classic-nepali-chicken-momo',
+    name: 'Classic Nepali Chicken Momo',
     category: 'mains',
-    price: 29.50,
+    price: 260,
     description:
-      'Silky handmade egg ribbons tossed in espresso-red wine braised beef short rib ragù, finished with gremolata and aged pecorino.',
+      'Hand-pleated steamed dumplings stuffed with juicy spiced chicken, ginger, and spring onion, served with roasted tomato achar.',
     image:
-      'https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
     tags: ['Signature'],
   },
   {
     id: 'mn-3',
-    slug: 'pan-seared-sea-bass',
-    name: 'Pan-Seared Sea Bass & Saffron Velouté',
+    slug: 'classic-chicken-cheese-pizza',
+    name: 'Classic Chicken & Cheese Pizza',
     category: 'mains',
-    price: 34.00,
+    price: 580,
     description:
-      'Crispy skin Mediterranean sea bass resting over braised fennel, baby artichokes, and delicate saffron citrus emulsion.',
+      'Crisp baked crust topped with tangy house tomato sauce, spiced grilled chicken, bell peppers, and melted mozzarella.',
     image:
-      'https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=900&q=80',
-    tags: ['Gluten-Free'],
+      'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=900&q=80',
+    tags: [],
   },
   {
     id: 'mn-4',
-    slug: 'harvest-halloumi-grain-bowl',
-    name: 'Harvest Quinoa & Grilled Halloumi Bowl',
+    slug: 'aromatic-chicken-biryani',
+    name: 'Aromatic Chicken Biryani',
     category: 'mains',
-    price: 21.50,
+    price: 480,
     description:
-      'Warm heirloom quinoa, charred baby carrots, avocado, pomegranate seeds, and golden seared halloumi dressed in mint vinaigrette.',
+      'Fragrant long-grain basmati rice layered with spiced tender chicken, caramelized onions, fresh mint, and cool raita.',
     image:
-      'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegetarian', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=900&q=80',
+    tags: ['Gluten-Free'],
   },
 
-  // 4. SIDES
+  // 4. SIDES & QUICK BITES
   {
     id: 'sd-1',
-    slug: 'truffle-parmesan-fries',
-    name: 'Truffle & Aged Parmesan Pommes Frites',
+    slug: 'spiced-nepali-chatpate',
+    name: 'Spiced Nepali Chatpate',
     category: 'sides',
-    price: 10.50,
+    price: 220,
     description:
-      'Twice-cooked Kennebec potato frites tossed with white truffle oil, crisp rosemary needles, and 24-month Parmigiano.',
+      'Crunchy puffed rice and crushed noodles tossed with ripe tomato, red onion, fresh cilantro, lime, and aromatic spices.',
     image:
-      'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegetarian', 'Gluten-Free'],
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069456/classico-brew-and-grill/chatpate-sadeko.jpg',
+    featured: true,
+    tags: ['Signature', 'Vegan'],
+    pairingNote: 'A favorite Restro Garden starter with Iced Lemon Mint Tea',
   },
   {
     id: 'sd-2',
-    slug: 'charred-broccolini-almonds',
-    name: 'Hearth-Charred Broccolini & Almonds',
+    slug: 'crispy-seasoned-french-fries',
+    name: 'Crispy Seasoned French Fries',
     category: 'sides',
-    price: 11.00,
+    price: 210,
     description:
-      'Tender broccolini blistered over embers with crushed Calabrian chili, preserved Meyer lemon, and toasted Marcona almonds.',
+      'Golden potato fries cooked crisp to order, dusted with sea salt and mild herbs alongside house tomato dip.',
     image:
-      'https://images.unsplash.com/photo-1584270354949-c26b0d5b4a0c?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-    tags: ['Wood-Fired', 'Vegan', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=80',
+    tags: ['Vegan', 'Gluten-Free'],
   },
   {
     id: 'sd-3',
-    slug: 'wood-fired-rosemary-focaccia',
-    name: 'Warm Sea-Salt & Rosemary Focaccia',
+    slug: 'toasted-herb-cheese-bread',
+    name: 'Toasted Herb & Cheese Bread',
     category: 'sides',
-    price: 9.00,
+    price: 240,
     description:
-      '48-hour fermented sourdough focaccia baked crisp on the hearth stone, served with whipped cultured butter and aged balsamic.',
+      'Warm oven-toasted bread brushed with roasted garlic butter, fresh herbs, and bubbling mozzarella.',
     image:
       'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=900&q=80',
     tags: ['Vegetarian'],
   },
+
+  // 5. DRINKS & BAR SPECIALS
   {
-    id: 'sd-4',
-    slug: 'creamed-spinach-gruyere',
-    name: 'Velvet Spinach & Cave-Aged Gruyère',
-    category: 'sides',
-    price: 11.50,
+    id: 'dr-1',
+    slug: 'iced-lemon-mint-tea',
+    name: 'Chilled Iced Lemon Mint Tea',
+    category: 'drinks',
+    price: 240,
     description:
-      'Baby spinach folded into nutmeg-scented cream and gratinéed until golden under melted Swiss Gruyère.',
+      'Amber brewed tea shaken over ice with bright lemon juice and muddled fresh mint leaves for warm Biratnagar afternoons.',
     image:
-      'https://images.unsplash.com/photo-1576045057995-568f588f82fb?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegetarian', 'Gluten-Free'],
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069464/classico-brew-and-grill/iced-mint-tea.jpg',
+    featured: true,
+    tags: ['Signature', 'Vegan', 'Gluten-Free'],
+  },
+  {
+    id: 'dr-2',
+    slug: 'devil-mojito-mocktail',
+    name: 'Devil Mojito (Mocktail)',
+    category: 'drinks',
+    price: 290,
+    description:
+      'House Bar Special: crisp garden mint, fresh squeezed lime, subtle spiced chili heat, and sparkling soda over crushed ice.',
+    image:
+      'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80',
+    tags: ['Signature', 'Vegan', 'Gluten-Free'],
+    pairingNote: 'Featured on Classico’s Bar Specials Board',
+  },
+  {
+    id: 'dr-3',
+    slug: 'pink-lady-cocktail',
+    name: 'Pink Lady (Cocktail)',
+    category: 'drinks',
+    price: 550,
+    description:
+      'House Bar Special: smooth classic evening cocktail shaken chilled with tart citrus, berry sweetness, and silky foam finish.',
+    image:
+      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80',
+    tags: ['Signature', 'Gluten-Free'],
+  },
+  {
+    id: 'dr-4',
+    slug: 'fresh-mint-lime-cooler',
+    name: 'Fresh Mint Lime Cooler',
+    category: 'drinks',
+    price: 190,
+    description:
+      'Cool pressed lime, hand-torn spearmint, light cane syrup, and sparkling chilled soda.',
+    image:
+      'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80',
+    tags: ['Vegan', 'Gluten-Free'],
   },
 
-  // 5. DESSERTS
+  // 6. DESSERTS & SWEETS
   {
     id: 'ds-1',
-    slug: 'basque-burnt-cheesecake',
-    name: 'Basque Burnt Cheesecake',
+    slug: 'warm-dark-chocolate-brownie',
+    name: 'Warm Dark Chocolate Brownie',
     category: 'desserts',
-    price: 13.00,
+    price: 320,
     description:
-      'Caramelized vanilla-bean custard center with a rich toasted crust, served alongside macerated seasonal berries.',
+      'Fudgy rich cocoa brownie served warm with vanilla ice cream and a drizzle of dark chocolate.',
     image:
-      'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-    tags: ['Signature', 'Vegetarian', 'Gluten-Free'],
+      'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=900&q=80',
+    tags: ['Signature', 'Vegetarian'],
   },
   {
     id: 'ds-2',
     slug: 'espresso-tiramisu-classico',
     name: 'Espresso Tiramisu Classico',
     category: 'desserts',
-    price: 12.50,
+    price: 360,
     description:
-      'Savoiardi biscuits steeped in Classico’s signature espresso roast, layered with whipped mascarpone and Valrhona cocoa dust.',
+      'Layered sponge biscuits dipped in freshly pulled espresso, topped with whipped cream cheese and dark cocoa.',
     image:
       'https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=900&q=80',
-    tags: ['Signature', 'Vegetarian'],
-  },
-  {
-    id: 'ds-3',
-    slug: 'warm-dark-chocolate-fondant',
-    name: 'Warm 70% Dark Chocolate Fondant',
-    category: 'desserts',
-    price: 14.00,
-    description:
-      'Molten single-origin cacao cake baked to order, paired with Madagascar vanilla bean gelato and sea-salt caramel.',
-    image:
-      'https://images.unsplash.com/photo-1624353365286-3f8d62daad51?auto=format&fit=crop&w=900&q=80',
     tags: ['Vegetarian'],
   },
   {
-    id: 'ds-4',
-    slug: 'pistachio-cardamom-creme-brulee',
-    name: 'Pistachio & Cardamom Crème Brûlée',
+    id: 'ds-3',
+    slug: 'baked-vanilla-cheesecake',
+    name: 'Baked Vanilla Cheesecake',
     category: 'desserts',
-    price: 12.00,
+    price: 380,
     description:
-      'Silky green cardamom custard beneath a crackling caramelized sugar glass, garnished with crushed pistachios.',
+      'Creamy caramelized baked cheesecake served chilled with fresh berry compote.',
     image:
-      'https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegetarian', 'Gluten-Free'],
-  },
-
-  // 6. DRINKS
-  {
-    id: 'dr-1',
-    slug: 'botanical-cucumber-mint-cooler',
-    name: 'Botanical Cucumber & Mint Cooler',
-    category: 'drinks',
-    price: 8.50,
-    description:
-      'Cold-pressed English cucumber, garden spearmint, fresh lime juice, and sparkling mineral water over crystal ice.',
-    image:
-      'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=900&q=80',
-    featured: true,
-    tags: ['Signature', 'Vegan', 'Gluten-Free'],
-  },
-  {
-    id: 'dr-2',
-    slug: 'smoked-rosemary-paloma-spritz',
-    name: 'Smoked Rosemary Grapefruit Spritz',
-    category: 'drinks',
-    price: 9.50,
-    description:
-      'Ruby red grapefruit juice, botanical agave nectar, zero-proof citrus distillate, and charred rosemary aroma.',
-    image:
-      'https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegan', 'Gluten-Free'],
-  },
-  {
-    id: 'dr-3',
-    slug: 'hibiscus-berry-artisan-soda',
-    name: 'Hibiscus & Wild Berry Spritz',
-    category: 'drinks',
-    price: 8.75,
-    description:
-      'Steeped organic hibiscus petals, crushed blackberries, ginger root essence, and fine effervescence.',
-    image:
-      'https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=80',
-    tags: ['Vegan', 'Gluten-Free'],
-  },
-  {
-    id: 'dr-4',
-    slug: 'valencia-orange-ginger-press',
-    name: 'Valencia Orange & Ginger Elixir',
-    category: 'drinks',
-    price: 8.00,
-    description:
-      'Fresh-pressed California Valencia oranges, raw turmeric, spicy ginger juice, and a touch of wildflower honey.',
-    image:
-      'https://images.unsplash.com/photo-1621506289937-a8e4df240d0b?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=900&q=80',
     tags: ['Vegetarian', 'Gluten-Free'],
   },
 ];

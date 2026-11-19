@@ -1102,7 +1102,7 @@ export function PagesVisualTab({
                     Dining Spaces / Seating Areas
                   </h3>
                   <p className="text-xs text-brand-dark/65">
-                    Areas guests can pick when booking a table (for example, Conservatory or Patio).
+                    Areas guests can pick when booking a table (for example, Restro Garden Courtyard or Mezzanine Deck).
                   </p>
                 </div>
                 <button

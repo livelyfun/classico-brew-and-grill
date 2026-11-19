@@ -6,12 +6,12 @@ import { usePathname } from 'next/navigation';
 import {
   Check,
   Clock,
+  Facebook,
   Instagram,
   Mail,
   MapPin,
   Phone,
   Send,
-  Share2,
 } from 'lucide-react';
 import { SiteSettingsData } from '@/types/cms';
 
@@ -80,24 +80,39 @@ export function Footer({ settings }: { settings: SiteSettingsData | null }) {
 
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-1">
-              <a
-                href={settings.instagramUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
-              >
-                <Instagram className="h-4 w-4" />
-              </a>
-              <a
-                href={settings.facebookUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Facebook"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
-              >
-                <Share2 className="h-4 w-4" />
-              </a>
+              {settings.facebookUrl && (
+                <a
+                  href={settings.facebookUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Facebook"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
+                >
+                  <Facebook className="h-4 w-4" />
+                </a>
+              )}
+              {settings.instagramUrl && (
+                <a
+                  href={settings.instagramUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Instagram"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
+                >
+                  <Instagram className="h-4 w-4" />
+                </a>
+              )}
+              {settings.mapsQueryUrl && (
+                <a
+                  href={settings.mapsQueryUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Google Maps Location"
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-brand-mint/30 bg-white/5 text-brand-mint-light transition-colors hover:border-brand-teal hover:bg-brand-teal hover:text-white"
+                >
+                  <MapPin className="h-4 w-4" />
+                </a>
+              )}
               <a
                 href={`mailto:${settings.email}`}
                 aria-label={`Email ${settings.brandName}`}
@@ -178,7 +193,7 @@ export function Footer({ settings }: { settings: SiteSettingsData | null }) {
               Seasonal Notes
             </h3>
             <p className="text-sm text-brand-mint-light/80 leading-relaxed">
-              Receive invitations to single-origin cupping mornings and seasonal wood-fired tasting menus.
+              Receive updates on evening specials, seasonal garden menus, and live gatherings at Classico Biratnagar.
             </p>
             {subscribed ? (
               <div className="flex items-center gap-2 rounded-xl border border-brand-mint/30 bg-brand-sage/40 px-4 py-3 text-xs text-brand-mint-light">
@@ -214,7 +229,7 @@ export function Footer({ settings }: { settings: SiteSettingsData | null }) {
             © {new Date().getFullYear()} {settings.brandName}. Crafted with care.
           </p>
           <p className="font-script text-xl text-brand-mint-light/90">
-            Roasted Daily • Wood-Fired Every Evening
+            Coffee House • Restro Garden • Grill — Biratnagar
           </p>
         </div>
       </div>

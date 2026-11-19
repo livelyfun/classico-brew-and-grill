@@ -153,13 +153,13 @@ const navGroups: NavGroup[] = [
       {
         key: 'gallery',
         label: 'Photo Gallery',
-        guide: 'Manage atmosphere, coffee, and wood-fired kitchen photos.',
+        guide: 'Manage atmosphere, coffee house, and restro garden photos.',
         icon: ImageIcon,
       },
       {
         key: 'blog',
         label: 'Blog & Articles',
-        guide: 'Write and publish stories from your roastery and kitchen.',
+        guide: 'Write and publish stories from your coffee house and restro garden.',
         icon: BookOpen,
       },
       {
@@ -1406,7 +1406,10 @@ export function AdminDashboardClient({
                     >
                       <div className="flex items-center gap-4 min-w-0">
                         <img
-                          src={item.imageUrl || '/images/hero-latte.png'}
+                          src={
+                            item.imageUrl ||
+                            'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg'
+                          }
                           alt={item.name}
                           className="h-16 w-16 shrink-0 rounded-xl object-cover bg-brand-bg border border-brand-mint/30"
                         />
@@ -1871,7 +1874,7 @@ export function AdminDashboardClient({
                     onChange={(e) =>
                       setGalleryForm({ ...galleryForm, title: e.target.value })
                     }
-                    placeholder="e.g. Sunlit Conservatory Morning"
+                    placeholder="e.g. Evening Mezzanine Lounge"
                     className="mt-1 w-full rounded-xl border border-brand-mint/50 bg-brand-bg/40 px-3.5 py-2.5 text-sm focus:border-brand-teal focus:bg-white focus:outline-none"
                   />
                 </div>

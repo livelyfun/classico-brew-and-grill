@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
         guests: Number(body.guests ?? 2),
         date: body.date.trim(),
         timeSlot: body.timeSlot.trim(),
-        seatingZone: body.seatingZone?.trim() || 'Botanical Conservatory',
+        seatingZone: body.seatingZone?.trim() || 'Restro Garden Courtyard',
         occasion: body.occasion?.trim() || 'Casual Dining',
         notes: body.notes?.trim() || null,
         status: 'Confirmed',

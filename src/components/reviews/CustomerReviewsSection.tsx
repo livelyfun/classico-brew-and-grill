@@ -88,8 +88,7 @@ export function CustomerReviewsSection({
               What Our Patrons Say
             </h2>
             <p className="mt-3 text-sm sm:text-base text-brand-dark/75 leading-relaxed">
-              Every cup roasted, every plate fired over our oak hearth carries the
-              passion of our craft. Read genuine memories from guests who have joined our table.
+              Every cup pulled at our Coffee House and every plate served in our Restro Garden is crafted with genuine hospitality. Read reflections from guests who have visited us in Biratnagar.
             </p>
           </div>
 
@@ -231,7 +230,7 @@ export function CustomerReviewsSection({
                       Leave a Guest Review
                     </h3>
                     <p className="text-xs text-brand-dark/70 mt-1">
-                      Tell us about your roastery coffee or wood-fired dining experience.
+                      Tell us about your coffee, food, or Restro Garden experience.
                     </p>
                   </div>
 

@@ -45,48 +45,42 @@ interface SeedSiteConfig {
 export const siteConfig: SeedSiteConfig = {
   brandName: 'Classico Brew & Grill',
   shortName: 'Classico',
-  tagline: 'Where Artisanal Roasts Meet the Open Flame',
+  tagline: 'Where Fresh Brews Meet the Restro Garden',
   subTagline:
-    'A serene botanical sanctuary uniting small-batch specialty coffee by morning with wood-fired culinary craft from midday into the evening.',
+    'Located along Airport Road in Biratnagar-4, Classico Brew & Grill brings together our morning Coffee House, open-air Restro Garden, evening grill specials, and welcoming Bed & Breakfast hospitality.',
   address: {
-    street: '428 Botanical Promenade, Suite 102',
-    district: 'Willow Creek Quarter',
-    city: 'Portland, OR 97209',
-    full: '428 Botanical Promenade, Willow Creek Quarter, Portland, OR 97209',
-    mapsQueryUrl:
-      'https://maps.google.com/?q=Pearl+District+Portland+OR+97209',
+    street: 'Airport Road, Biratnagar-4',
+    district: 'Airport Area, Biratnagar-4',
+    city: 'Biratnagar 56613, Koshi Province, Nepal',
+    full: 'Airport Road, Biratnagar-4, Morang 56613, Koshi Province, Nepal',
+    mapsQueryUrl: 'https://maps.app.goo.gl/PwGkHoddoBmUc6u36',
     mapsEmbedUrl:
-      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11181.20165502364!2d-122.688169!3d45.526696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54950a02332a173d%3A0x8c1e74e1620a1869!2sPearl%20District%2C%20Portland%2C%20OR!5e0!3m2!1sen!2sus!4v1710000000000!5m2!1sen!2sus',
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3571.6!2d87.2684502!3d26.4852374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef757b5875761b%3A0xd123465b6abe0627!2sClassico%20Brew%20%26%20Grill!5e0!3m2!1sen!2snp!4v1710000000000!5m2!1sen!2snp',
   },
   contact: {
-    phone: '+1 (503) 555-0194',
-    email: 'hello@classicobrewgrill.com',
-    eventsEmail: 'gatherings@classicobrewgrill.com',
+    phone: '+977 982-7326578',
+    email: 'theclassico777@gmail.com',
+    eventsEmail: 'theclassico777@gmail.com',
   },
   socials: {
-    instagram: 'https://instagram.com',
-    facebook: 'https://facebook.com',
-    tripadvisor: 'https://tripadvisor.com',
+    instagram: '',
+    facebook: 'https://www.facebook.com/theclassico777/',
+    tripadvisor: '',
   },
   openingHours: [
     {
-      days: 'Monday – Thursday',
+      days: 'Sunday – Friday',
       hours: '7:30 AM – 10:00 PM',
-      note: 'Roastery from 7:30 AM • Wood Grill from 11:30 AM',
+      note: 'Coffee House from 7:30 AM • Grill & Restro Garden All Day',
     },
     {
-      days: 'Friday – Saturday',
-      hours: '7:30 AM – 11:30 PM',
-      note: 'Late Evening Acoustic Lounge & Grill',
-    },
-    {
-      days: 'Sunday',
-      hours: '8:00 AM – 9:30 PM',
-      note: 'Botanical Brunch until 2:30 PM',
+      days: 'Saturday',
+      hours: '7:30 AM – 10:00 PM',
+      note: 'Weekend Garden Lounge, Mezzanine & Evening Specials',
     },
   ],
-  roasteryHours: 'Daily: 7:30 AM – 5:00 PM',
-  grillHours: 'Daily: 11:30 AM – Close',
+  roasteryHours: 'Daily: 7:30 AM – 10:00 PM',
+  grillHours: 'Daily: 11:00 AM – 10:00 PM',
 };
 
 export const navigationLinks = [
@@ -99,105 +93,109 @@ export const navigationLinks = [
 
 export const brandValues: BrandValue[] = [
   {
-    id: 'val-sourcing',
-    title: 'Single-Origin Roastery',
+    id: 'val-coffee',
+    title: 'La Cimbali Coffee House',
     description:
-      'Every morning begins with sustainably harvested micro-lot beans roasted in small batches for bright floral clarity and velvet crema.',
+      'Every morning starts at 7:30 AM with freshly pulled double espressos, velvety cappuccinos, and classic Americanos brewed on our Italian La Cimbali M23 UP.',
     iconName: 'Coffee',
   },
   {
-    id: 'val-flame',
-    title: 'White Oak & Applewood Fire',
+    id: 'val-grill',
+    title: 'Fresh Kitchen & Grill Specials',
     description:
-      'Our custom open-hearth grill infuses prime pasture-raised cuts and coastal seafood with subtle, aromatic wood smoke.',
+      'From toasted club sandwiches and Nepali chatpate to evening specials like Mutton Cheese Finger, Chicken Khumbi, and Stuffed Grill Paneer.',
     iconName: 'Flame',
   },
   {
-    id: 'val-botanical',
-    title: 'Botanical Pantry',
+    id: 'val-garden',
+    title: 'Open-Air Restro Garden',
     description:
-      'From house-steeped sage and rosemary syrups to seasonal market greens, fresh botanicals anchor both our bar and kitchen.',
+      'Relax beneath our covered pergola lounge, open stone courtyard, or two-story illuminated mezzanine deck framed by greenery and hanging lanterns.',
     iconName: 'Leaf',
   },
   {
     id: 'val-hospitality',
-    title: 'Unrushed Hospitality',
+    title: 'Warm Biratnagar Hospitality',
     description:
-      'Designed as a timeless neighborhood refuge where quiet morning rituals flow effortlessly into candlelit evening dinners.',
+      'Conveniently situated near Biratnagar Airport with dedicated covered parking, friendly table service, takeaway, and Bed & Breakfast convenience.',
     iconName: 'HeartHandshake',
   },
 ];
 
 export const storyChapters = [
   {
-    year: 'Dawn Ritual',
-    title: 'Crafted in the Conservatory',
+    year: 'Coffee House',
+    title: 'Morning Rituals on Airport Road',
     content:
-      'Classico began with a simple question: why do the finest specialty coffee houses close just as dinner begins, while great grill rooms rarely honor the art of a morning espresso? We built one unified conservatory where both crafts live under a canopy of olive leaves and warm oak.',
+      'Classico Brew & Grill opened near Biratnagar Airport with a clear vision: create a welcoming neighborhood spot where travelers, families, and friends can start the day at 7:30 AM with a properly pulled espresso or frothy cappuccino.',
   },
   {
-    year: 'Open Hearth',
-    title: 'Honest Ingredients, Patient Fire',
+    year: 'Restro Garden',
+    title: 'From Sunlit Courtyard to Mezzanine Evenings',
     content:
-      'By 11:30 each morning, the espresso grinder shares the spotlight with glowing white oak embers. Our culinary team partners directly with local ranchers, artisan cheesemakers, and coastal fishers so every plate needs little more than sea salt, cold-pressed herbs, and clean flame.',
+      'Behind our Airport Road storefront sits an expansive open-air Restro Garden—featuring shaded pergola sofas, stone walkways, greenery, and an illuminated upper mezzanine deck overlooking the courtyard at dusk.',
   },
   {
-    year: 'Everyday Elegance',
-    title: 'A Table for Every Chapter of the Day',
+    year: 'Grill & Stay',
+    title: 'All-Day Dining, Bar Specials & Bed & Breakfast',
     content:
-      'Whether you arrive at 8 AM for a hand-poured Ethiopian single-origin and toasted sourdough, or gather at 8 PM over cedar-planked salmon and prime ribeye, Classico welcomes you with soft mint calm and genuine warmth.',
+      'From quick midday bites and Nepali favorites to evening grill specials, mocktails, and Bed & Breakfast hospitality, our team welcomes walk-ins, casual meetups, and celebrations every day until 10:00 PM.',
   },
 ];
 
 export const craftLeaders: SeedCraftLeader[] = [
   {
     id: 'leader-1',
-    name: 'Elena Vance',
-    role: 'Head Roaster & Beverage Director',
-    specialty: 'Botanical Infusions & Precision Pour-Overs',
-    bio: 'With twelve years sourcing direct-trade harvests across Ethiopia and Colombia, Elena crafts Classico’s signature espresso blends and herbal cold brews.',
+    name: 'Espresso & Coffee Bar Team',
+    role: 'Classico Coffee House',
+    specialty: 'La Cimbali M23 UP Espresso & Refreshers',
+    bio: 'Our baristas dial in rich single and double shots, creamy cappuccinos, classic Americanos, and chilled iced teas from 7:30 AM daily.',
     image:
-      'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=800&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
   },
   {
     id: 'leader-2',
-    name: 'Marco Bellini',
-    role: 'Executive Wood-Fire Chef',
-    specialty: 'Live-Fire Aging & Coastal Grills',
-    bio: 'Trained in Northern Italian hearth kitchens and Pacific Northwest smokehouses, Chef Marco balances classic dry-aged richness with vibrant botanical accompaniments.',
+    name: 'Kitchen, Bar & Garden Team',
+    role: 'Restro Garden & Mezzanine Lounge',
+    specialty: 'Evening Chef Specials, Grill & Bar Craft',
+    bio: 'Our chefs and hospitality crew craft evening favorites—from Mutton Cheese Finger and Stuffed Grill Paneer to signature mocktails—across our courtyard and upper deck.',
     image:
-      'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=800&q=80',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
   },
 ];
 
 export const seatingZones: SeatingZone[] = [
   {
-    id: 'conservatory',
-    name: 'Botanical Conservatory',
-    capacity: '2 – 6 Guests',
-    description: 'Sunlit glass atrium framed by indoor olive trees and sage velvet banquettes.',
-    ambiance: 'Bright, airy & serene',
-  },
-  {
-    id: 'hearth-lounge',
-    name: 'Fireside Grill Lounge',
+    id: 'garden-courtyard',
+    name: 'Restro Garden Courtyard',
     capacity: '2 – 8 Guests',
-    description: 'Warm timber tables overlooking the glow of the open white-oak hearth.',
-    ambiance: 'Intimate & aromatic',
+    description:
+      'Open-air stone courtyard surrounded by courtyard trees, potted greenery, and soft evening accent lighting.',
+    ambiance: 'Breezy, lively & open-air',
   },
   {
-    id: 'garden-terrace',
-    name: 'Covered Garden Terrace',
-    capacity: '2 – 10 Guests',
-    description: 'Heated stone courtyard surrounded by rosemary planters and soft string lights.',
-    ambiance: 'Breezy outdoor sanctuary',
+    id: 'covered-lounge',
+    name: 'Covered Garden Lounge',
+    capacity: '2 – 6 Guests',
+    description:
+      'Shaded pergola seating with cushioned wooden lounge chairs, hanging lanterns, ceiling fans, and prayer flags.',
+    ambiance: 'Relaxed, shaded & cozy',
   },
   {
-    id: 'chefs-counter',
-    name: "Chef's & Barista Counter",
+    id: 'mezzanine-deck',
+    name: 'Upper Mezzanine Deck',
+    capacity: '2 – 8 Guests',
+    description:
+      'Elevated open-air balcony lounge lit with warm amber strips, overlooking the garden and Biratnagar sky.',
+    ambiance: 'Scenic & intimate',
+  },
+  {
+    id: 'coffee-bar',
+    name: 'Coffee House & Bar Counter',
     capacity: '1 – 4 Guests',
-    description: 'Front-row seats to precision pour-over service and live culinary plating.',
-    ambiance: 'Interactive craft experience',
+    description:
+      'Casual ground-level counter seating beside our espresso bar and evening beverage station.',
+    ambiance: 'Quick, casual & welcoming',
   },
 ];
 
@@ -205,15 +203,15 @@ export const testimonials: Testimonial[] = [
   {
     id: 't1',
     quote:
-      'The Pistachio Sage Latte in the sunlit conservatory is my weekly ritual, and the wood-fired ribeye we had Friday night rivaled the finest steakhouses in town.',
-    author: 'Camille Laurent',
-    context: 'Local Food & Design Journal',
+      'Warm, inviting atmosphere near the airport with fresh coffee, tasty snacks, and a lovely outdoor garden for evening catch-ups.',
+    author: 'Biratnagar Local Guests',
+    context: 'Google Maps Visitor Feedback (4.1★)',
   },
   {
     id: 't2',
     quote:
-      'Rarely does a space feel this calm yet vibrant. Every detail—from the botanical palette to the attentive pacing of courses—feels truly timeless.',
-    author: 'Julian & Priya Mercer',
-    context: 'Anniversary Dinner Guests',
+      'Pleasant, attentive staff and comfortable open-air seating—ideal whether stopping for a morning cappuccino or relaxing on the upper deck at dusk.',
+    author: 'Airport Road Patrons',
+    context: 'Dine-In & Restro Garden Guests',
   },
 ];

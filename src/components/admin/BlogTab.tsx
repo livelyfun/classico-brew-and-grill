@@ -47,10 +47,10 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
   const [form, setForm] = useState({
     title: '',
     slug: '',
-    category: 'Roastery & Brews',
+    category: 'Coffee & Brews',
     author: 'Classico Team',
-    authorRole: 'Head Roaster & Chef',
-    readTime: '4 min read',
+    authorRole: 'Coffee House & Kitchen',
+    readTime: '3 min read',
     coverImage: '',
     excerpt: '',
     content: '',
@@ -92,12 +92,12 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
     setForm({
       title: '',
       slug: '',
-      category: categories[0] || 'Roastery & Brews',
+      category: categories[0] || 'Coffee & Brews',
       author: 'Classico Team',
-      authorRole: 'Culinary Team',
-      readTime: '4 min read',
+      authorRole: 'Coffee House & Kitchen',
+      readTime: '3 min read',
       coverImage:
-        'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80',
+        'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
       excerpt: '',
       content: '',
       sortOrder: posts.length + 1,
@@ -159,7 +159,7 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
             Manage Blog Posts
           </h2>
           <p className="text-xs sm:text-sm text-brand-dark/70">
-            Publish roastery stories, culinary guides, and artisan coffee techniques to the public blog.
+            Publish Coffee House stories, Restro Garden updates, and seasonal kitchen highlights to the public blog.
           </p>
         </div>
 
@@ -229,7 +229,7 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
                 type="text"
                 value={form.category}
                 onChange={(e) => setForm({ ...form, category: e.target.value })}
-                placeholder="e.g. Roastery & Brews"
+                placeholder="e.g. Coffee & Brews"
                 className="w-full rounded-xl border border-brand-mint/45 bg-brand-bg px-3.5 py-2 text-sm text-brand-dark focus:border-brand-teal focus:outline-none"
               />
             </div>
@@ -242,7 +242,7 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
                 type="text"
                 value={form.author}
                 onChange={(e) => setForm({ ...form, author: e.target.value })}
-                placeholder="e.g. Elias Vance"
+                placeholder="e.g. Classico Barista Team"
                 className="w-full rounded-xl border border-brand-mint/45 bg-brand-bg px-3.5 py-2 text-sm text-brand-dark focus:border-brand-teal focus:outline-none"
               />
             </div>
@@ -255,7 +255,7 @@ export function BlogTab({ posts, onMutate, busy }: BlogTabProps) {
                 type="text"
                 value={form.authorRole}
                 onChange={(e) => setForm({ ...form, authorRole: e.target.value })}
-                placeholder="e.g. Head Roaster"
+                placeholder="e.g. Coffee House & Kitchen"
                 className="w-full rounded-xl border border-brand-mint/45 bg-brand-bg px-3.5 py-2 text-sm text-brand-dark focus:border-brand-teal focus:outline-none"
               />
             </div>

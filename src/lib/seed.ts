@@ -89,92 +89,102 @@ export async function runSeed(): Promise<void> {
   // 3. Hero & Homepage Sections
   const heroCount = await prisma.heroContent.count();
   if (heroCount === 0) {
+    const heroImages = [
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069462/classico-brew-and-grill/garden-evening.jpg',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069454/classico-brew-and-grill/cappuccino-americano-duo.jpg',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069463/classico-brew-and-grill/garden-lounge-day.jpg',
+      'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069456/classico-brew-and-grill/chatpate-sadeko.jpg',
+    ];
+
     await prisma.heroContent.create({
       data: {
-        badgeText: 'Botanical Roastery & Wood-Fired Kitchen',
-        scriptAccent: 'Crafted with Calm & Ember',
+        badgeText: 'Coffee House • Restro Garden • Bed & Breakfast',
+        scriptAccent: 'Welcome to Classico, Biratnagar',
         headline: siteConfig.tagline,
         subheadline: siteConfig.subTagline,
         primaryCtaLabel: 'Book a Table',
         primaryCtaHref: '/reservations',
         secondaryCtaLabel: 'Explore Our Menu',
         secondaryCtaHref: '/menu',
-        heroImageUrl: '/images/hero-latte.png',
-        floatingCard1Title: 'Single-Origin Espresso',
-        floatingCard1Subtitle: 'Botanical Infusions',
-        floatingCard2Title: 'White-Oak Grill',
-        floatingCard2Subtitle: 'Wood-Fired Evenings',
+        heroImageUrl: heroImages[0],
+        floatingCard1Title: 'La Cimbali Espresso',
+        floatingCard1Subtitle: 'Coffee House from 7:30 AM',
+        floatingCard2Title: 'Restro Garden & Deck',
+        floatingCard2Subtitle: 'Open-Air Evenings',
         pillarsJson: [
           {
-            label: 'Roastery',
+            label: 'Coffee House',
             sublabel: 'From 7:30 AM Daily',
             iconName: 'Coffee',
           },
           {
-            label: 'Oak Hearth',
-            sublabel: 'Dry-Aged & Coastal',
+            label: 'Grill & Kitchen',
+            sublabel: 'Fresh Plates All Day',
             iconName: 'Flame',
           },
           {
-            label: 'Conservatory',
-            sublabel: 'Willow Creek Quarter',
+            label: 'Restro Garden',
+            sublabel: 'Airport Road, Biratnagar',
             iconName: 'Leaf',
           },
         ],
         signatureSplitJson: {
-          scriptLabel: 'Two Timeless Crafts',
-          title: 'From Dawn Espresso to Ember-Kissed Evenings',
+          scriptLabel: 'Morning Brews to Evening Garden',
+          title: 'Two Experiences Under One Roof in Biratnagar',
           description:
-            'Classico bridges the quiet serenity of a specialty conservatory café with the warmth and richness of a classic wood-fired dining room.',
+            'Classico Brew & Grill seamlessly transitions from a calm Airport Road coffee house in the morning to a lantern-lit restro garden and mezzanine lounge after sunset.',
           items: [
             {
               id: 'brews',
-              script: 'Morning & Midday',
-              title: 'Signature Artisanal Brews',
-              subtitle: 'Small-Batch Roastery & Botanical Espresso Bar',
+              script: 'Coffee House',
+              title: 'La Cimbali Espresso & Iced Brews',
+              subtitle: 'Fresh Morning Coffee Bar from 7:30 AM Daily',
               description:
-                'Start your morning beneath natural conservatory light with precision V60 pour-overs, cold-steeped rosemary tonics, and our signature Pistachio Sage Latte crafted with house-made infusions.',
+                'Begin your day with rich double espressos, velvety latte-art cappuccinos, bold classic Americanos, and chilled iced teas prepared fresh on our Italian La Cimbali M23 UP espresso bar.',
               highlights: [
-                'Direct-trade Ethiopian & Colombian single origins',
-                'House-steeped pistachio, sage & Madagascar vanilla syrups',
-                'Fresh-baked sourdough focaccia & morning pastries',
+                'Italian La Cimbali M23 UP espresso extraction',
+                'Fresh cappuccinos, lattes, Americanos & chilled iced mint tea',
+                'Paired with grilled club sandwiches & light breakfast plates',
               ],
               imageUrl:
-                'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1000&q=80',
+                'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
               ctaLabel: 'Explore Coffee & Brews',
               ctaHref: '/menu?category=coffee-brews',
               accentColor: 'teal',
             },
             {
               id: 'grill',
-              script: 'Lunch & Candlelit Dinner',
-              title: 'White-Oak Grill Specials',
-              subtitle: 'Open-Hearth Cuts, Coastal Seafood & Handmade Mains',
+              script: 'Restro Garden & Mezzanine',
+              title: 'Evening Grill Specials & Bar',
+              subtitle: 'Open Courtyard, Covered Lounge & Upper Deck',
               description:
-                'As afternoon turns to dusk, our white oak and applewood hearth comes alive. Savor 28-day dry-aged ribeye, cedar-seared Atlantic salmon, and herb-crusted lamb finished with cultured herb butter.',
+                'Unwind outdoors or up on our illuminated mezzanine deck over house evening specials—from Mutton Cheese Finger and Chicken Khumbi to Stuffed Grill Paneer, Devil Mojito mocktails, and Pink Lady cocktails.',
               highlights: [
-                'Seasoned white oak & fragrant Pacific fruitwood embers',
-                'Pasture-raised prime cuts & sustainable coastal catches',
-                'Handmade pappardelle, truffle risotto & blistered sides',
+                'Chef Eve Specials: Mutton Cheese Finger, Chicken Khumbi & Stuffed Paneer',
+                'Bar Specials: Devil Mojito Mocktail & Pink Lady Cocktail',
+                'Breezy garden courtyard, shaded sofa pergola & covered guest parking',
               ],
               imageUrl:
-                'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80',
-              ctaLabel: 'Explore Grill & Mains',
+                'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
+              ctaLabel: 'Explore Grill & Specials',
               ctaHref: '/menu?category=grill',
               accentColor: 'sage',
             },
           ],
         },
         ctaBannerJson: {
-          badgeText: 'Morning Coffee • Candlelit Grill • Private Gatherings',
+          badgeText: 'Restro Garden Courtyard • Covered Lounge • Mezzanine Deck',
           scriptAccent: 'Save Your Seat at Classico',
-          headline: 'Ready for Slow Mornings or Wood-Fired Evenings?',
+          headline: 'Join Us for Morning Coffee or Open-Air Evenings',
           description:
-            'Reserve your preferred space in our Botanical Conservatory, Fireside Grill Lounge, or Garden Terrace in just a few clicks.',
+            'Reserve your spot in our Restro Garden Courtyard, Covered Garden Lounge, or Upper Mezzanine Deck along Airport Road, Biratnagar.',
           primaryCtaLabel: 'Book a Table Now',
           primaryCtaHref: '/reservations',
           secondaryCtaLabel: 'Browse the Full Menu',
           secondaryCtaHref: '/menu',
+          heroImages,
         },
         published: true,
       },
@@ -185,42 +195,42 @@ export async function runSeed(): Promise<void> {
   const pagesSeed = [
     {
       slug: 'menu',
-      scriptLabel: 'Seasonal Roasts & Open-Flame Kitchen',
+      scriptLabel: 'Coffee House & All-Day Kitchen',
       title: 'Our Menu',
       description:
-        'Every dish and brew at Classico is crafted to order — uniting single-origin espresso artistry with white-oak grilled classics.',
+        'Freshly pulled espresso, classic café bites, Nepali favorites, and Classico’s evening grill & bar specials served daily from 7:30 AM to 10:00 PM.',
       contentJson: {
-        pairingBadge: 'Sommelier & Barista Pairings',
-        pairingTitle: 'Curated Tasting Duos',
+        pairingBadge: 'Chef & Barista Favorites',
+        pairingTitle: 'Popular Pairings at Classico',
         pairingDescription:
-          'Ask your server about our complimentary pairing recommendations—from bright Ethiopian pour-overs alongside warm Basque cheesecake to smoky rosemary spritzes crafted to balance white-oak aged ribeye.',
-        pairingDuo1: 'Pistachio Latte + Espresso Tiramisu',
-        pairingDuo2: 'Prime Ribeye + Rosemary Grapefruit Spritz',
+          'Ask our staff for today’s evening board specials—from warm cappuccinos alongside grilled club sandwiches in the morning to crisp spiced chatpate and chilled iced mint tea in the garden.',
+        pairingDuo1: 'Signature Cappuccino + Grilled Club Sandwich & Fries',
+        pairingDuo2: 'Iced Lemon Mint Tea + Spiced Nepali Chatpate',
       },
     },
     {
       slug: 'about',
-      scriptLabel: 'Our Heritage & Philosophy',
+      scriptLabel: 'Airport Road, Biratnagar',
       title: 'The Story of Classico',
       description:
-        'Born from a passion for unhurried mornings and vibrant open-flame dinners, Classico Brew & Grill is an evergreen sanctuary of craft.',
+        'A welcoming Coffee House, Restro Garden, Grill & Bed & Breakfast built for relaxed mornings and memorable Biratnagar evenings.',
       contentJson: {
-        storyScript: 'Rooted in Botanical Calm',
-        storyHeadline: 'A Place Where Every Hour Feels Considered',
+        storyScript: 'Rooted in Biratnagar',
+        storyHeadline: 'Coffee House by Morning, Restro Garden by Dusk',
         storyImageUrl:
-          'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=80',
-        storyOverlayTitle: 'Dual-Craft Conservatory',
-        storyOverlaySubtitle: 'Specialty Roastery & Wood-Fired Kitchen',
+          'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069462/classico-brew-and-grill/garden-evening.jpg',
+        storyOverlayTitle: 'Classico Restro Garden',
+        storyOverlaySubtitle: 'Airport Road, Biratnagar-4',
         chapters: storyChapters,
-        valuesScript: 'What Guides Us',
-        valuesTitle: 'Our Four Pillars of Craft',
+        valuesScript: 'What Defines Us',
+        valuesTitle: 'Our Four Pillars of Hospitality',
         valuesDescription:
-          'Every cup pulled and every plate lifted from the hearth reflects our dedication to honest sourcing and serene hospitality.',
+          'Every cup pulled at dawn and every platter served in the courtyard reflects genuine warmth, honest flavors, and inviting space.',
         values: brandValues,
-        leadersScript: 'The Artisans',
-        leadersTitle: 'Meet the Minds Behind the Bar & Hearth',
+        leadersScript: 'The People Behind Classico',
+        leadersTitle: 'At Your Service Every Day',
         leadersDescription:
-          'Our roastery and kitchen are led by craftspeople who treat provenance and patience as essential ingredients.',
+          'From our morning espresso baristas to our evening kitchen and bar crew, our team is dedicated to attentive, welcoming service.',
         leaders: craftLeaders.map((l) => ({
           id: l.id,
           name: l.name,
@@ -229,8 +239,8 @@ export async function runSeed(): Promise<void> {
           bio: l.bio,
           imageUrl: l.image,
         })),
-        testimonialsScript: 'Kind Words',
-        testimonialsTitle: 'Voices from Our Table',
+        testimonialsScript: 'Guest Feedback',
+        testimonialsTitle: 'Voices from Biratnagar',
         testimonials,
       },
     },
@@ -239,12 +249,12 @@ export async function runSeed(): Promise<void> {
       scriptLabel: 'Visual Journal',
       title: 'Moments at Classico',
       description:
-        'Step inside our botanical conservatory, morning espresso bar, and glowing white-oak hearth.',
+        'Step inside our Airport Road coffee house, shaded restro garden, illuminated upper mezzanine deck, and fresh kitchen favorites.',
       contentJson: {
-        homePreviewScript: 'The Sanctuary',
-        homePreviewTitle: 'Atmosphere & Conservatory Glimpses',
+        homePreviewScript: 'The Restro Garden',
+        homePreviewTitle: 'Atmosphere, Coffee & Courtyard Glimpses',
         homePreviewDescription:
-          'Soft sage banquettes, warm oak tables, indoor olive greenery, and the ambient glow of the open hearth.',
+          'Illuminated evening mezzanine decks, shaded garden sofas beneath prayer flags, La Cimbali espresso shots, and fresh kitchen plates.',
       },
     },
     {
@@ -252,42 +262,43 @@ export async function runSeed(): Promise<void> {
       scriptLabel: "We'd Love to Hear From You",
       title: 'Contact & Visit Us',
       description:
-        'Questions about private conservatory dining, bespoke coffee tastings, or upcoming gatherings? Reach out to our hospitality team.',
+        'Questions about table reservations, group gatherings, takeaway orders, or Bed & Breakfast stays near Biratnagar Airport? Get in touch with our team.',
       contentJson: {
         deskTitle: 'Hospitality Desk',
-        deskSubtitle: "Willow Creek Quarter's botanical café & grill.",
+        deskSubtitle:
+          'Airport Road, Biratnagar-4 • Also reachable at +977 970-9129167',
         formScript: 'Send a Note',
         formTitle: 'Direct Inquiry Form',
       },
     },
     {
       slug: 'reservations',
-      scriptLabel: 'Reserve Your Sanctuary',
+      scriptLabel: 'Reserve Your Table',
       title: 'Book a Table',
       description:
-        'Choose your preferred dining zone—from our sunlit Botanical Conservatory to a seat beside the glowing white-oak hearth.',
+        'Pick your preferred setting—from our breezy Restro Garden Courtyard and shaded Covered Garden Lounge to the elevated Upper Mezzanine Deck.',
       contentJson: {
         seatingZones,
         timeGroups: [
           {
-            label: 'Morning Brew & Brunch',
-            slots: ['8:30 AM', '9:30 AM', '10:30 AM', '11:30 AM'],
+            label: 'Morning Coffee & Breakfast',
+            slots: ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM'],
           },
           {
-            label: 'Midday Hearth Lunch',
+            label: 'Midday Lunch & Café',
             slots: ['12:30 PM', '1:30 PM', '2:30 PM', '4:00 PM'],
           },
           {
-            label: 'Evening Wood-Fired Grill',
-            slots: ['5:30 PM', '6:30 PM', '7:30 PM', '8:30 PM', '9:15 PM'],
+            label: 'Evening Restro Garden & Grill',
+            slots: ['5:30 PM', '6:30 PM', '7:30 PM', '8:30 PM', '9:00 PM'],
           },
         ],
         occasions: [
           'Casual Dining',
+          'Coffee Meetup',
           'Birthday Celebration',
-          'Anniversary',
-          'Business Coffee / Lunch',
-          'Date Night',
+          'Family Dinner',
+          'Group Hangout',
         ],
       },
     },
@@ -374,73 +385,64 @@ export async function runSeed(): Promise<void> {
   if (blogCount === 0) {
     const initialBlogPosts = [
       {
-        slug: 'art-of-slow-roasting',
-        title: 'The Art of Slow Roasting: Sourcing & Crafting Single-Origin Coffees',
+        slug: 'morning-espresso-la-cimbali-biratnagar',
+        title: 'Morning Espresso Craft on Airport Road: Inside Our Coffee House',
         excerpt:
-          'From high-altitude volcanic terraces to our copper drum roaster: how patience and precise airflow bring out notes of jasmine, stone fruit, and dark chocolate.',
-        content: `Coffee roasting at Classico is not merely a process—it is a sensory ritual that starts thousands of miles away on steep, mist-cloaked mountain terraces.
+          'Starting at 7:30 AM daily, how our Italian La Cimbali M23 UP bar serves rich double espressos, creamy cappuccinos, and smooth Americanos for Biratnagar coffee lovers.',
+        content: `Great mornings in Biratnagar begin with fresh air, friendly company, and an espresso pulled with care. At Classico Brew & Grill, our Coffee House opens bright and early at 7:30 AM.
 
-### Direct Trade Relationships
-We partner directly with family-run estates across Yirgacheffe, Huila, and Antigua. By cutting out intermediaries, we ensure growers receive ethical premiums while securing lots harvested at the apex of ripeness.
+### Brewed on the La Cimbali M23 UP
+Every espresso, cappuccino, and Americano starts with freshly ground beans extracted under steady pressure on our La Cimbali M23 UP machine—delivering thick, aromatic golden crema in every cup.
 
-### The Thermal Profile
-Inside our vintage-inspired copper drum roaster, temperatures are monitored second-by-second. We favor a medium-light roast curve that preserves delicate floral top notes without sacrificing body.
-
-### Brewing at Home
-To experience our beans at their best, grind immediately before brewing, use filtered water at 93°C (200°F), and allow a gentle 45-second bloom to unlock trapped carbon and sweetness.`,
+### From Quick Airport Stops to Slow Catch-Ups
+Whether you are catching a morning flight at nearby Biratnagar Airport or meeting friends for a quiet cappuccino and grilled club sandwich, our front bar and sunny courtyard tables welcome walk-ins all day.`,
         coverImage:
-          'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=1200&q=80',
-        author: 'Elias Vance',
-        authorRole: 'Head Roaster',
-        category: 'Roastery & Brews',
-        readTime: '4 min read',
+          'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069460/classico-brew-and-grill/espresso-la-cimbali.jpg',
+        author: 'Classico Barista Team',
+        authorRole: 'Coffee House',
+        category: 'Coffee & Brews',
+        readTime: '3 min read',
         sortOrder: 1,
         published: true,
       },
       {
-        slug: 'wood-smoke-and-season',
-        title: 'Wood, Smoke, and Season: Unlocking Deep Flavors with White-Oak Fire',
+        slug: 'evenings-in-the-restro-garden-and-mezzanine',
+        title: 'Dusk in the Restro Garden: Courtyard Tables & Our Mezzanine Deck',
         excerpt:
-          'Why the ancient art of open-fire hearth cooking creates texture and nuance that modern kitchen stoves simply cannot replicate.',
-        content: `Before gas burners and electric ovens, cooking was a dialogue between embers, cast iron, and patience. At Classico, our hearth burns throughout the day and evening.
+          'As evening settles over Airport Road, lantern-lit garden seating, warm mezzanine lights, and sizzling chef specials transform Classico into a relaxing hangout.',
+        content: `When the afternoon heat softens into evening twilight, Classico Brew & Grill comes alive under soft architectural lights and hanging lanterns.
 
-### The Selection of Oak & Applewood
-We source sustainably harvested white oak and cured applewood. Oak generates the steady, fierce 700°F coal base needed to sear dry-aged cuts, while applewood contributes a gentle, fruity aromatic smoke.
+### Spaces for Every Group
+Guests can settle into our shaded garden lounge lined with cushioned seating and colorful prayer flags, pull up chairs in the open-air courtyard, or climb up to our illuminated two-story mezzanine deck for sunset views.
 
-### The Art of Temperature Zones
-Our grill master works across three distinct elevations: searing directly over incandescent embers, slow-roasting root vegetables in copper pans on the perimeter, and resting meats on the raised warming lattice.
-
-### Respecting the Ingredient
-We let high-grade ingredients speak with minimal interference: flaky sea salt, cold-pressed olive oil, fresh thyme from our herb garden, and the unmistakable kiss of live wood smoke.`,
+### Evening Chef & Bar Specials
+Evenings bring our chalkboard specials to life—featuring Mutton Cheese Finger, Chicken Khumbi, Singapore Mushroom, and Stuffed Grill Paneer paired with Devil Mojito mocktails and Pink Lady cocktails.`,
         coverImage:
-          'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80',
-        author: 'Chef Marcus Hayes',
-        authorRole: 'Executive Chef',
-        category: 'Wood-Fired Hearth',
-        readTime: '5 min read',
+          'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069465/classico-brew-and-grill/mezzanine-bar-evening.jpg',
+        author: 'Classico Hospitality Team',
+        authorRole: 'Restro Garden',
+        category: 'Atmosphere & Garden',
+        readTime: '4 min read',
         sortOrder: 2,
         published: true,
       },
       {
-        slug: 'botanical-tonics-cold-brew',
-        title: 'Botanical Tonics & Cold Brew: Crafting Refreshment for Sunlit Afternoons',
+        slug: 'fresh-afternoon-bites-and-iced-refreshers',
+        title: 'Afternoon Favorites: Iced Lemon Mint Tea, Chatpate & Grilled Sandwiches',
         excerpt:
-          'How house-distilled rosemary syrup, citrus oleo-saccharum, and single-origin cold brew unite into layered non-alcoholic refreshments.',
-        content: `When the midday sun floods our Glass Conservatory, guests often seek something uniquely refreshing: the invigorating depth of specialty coffee paired with lively herbs and botanicals.
+          'A closer look at the refreshing iced teas, crisp Nepali chatpate, and golden toasted club sandwiches our guests love sharing beneath the pergola.',
+        content: `Midday and late afternoon are made for easygoing plates shared outdoors. Our menu blends beloved Nepali café flavors with satisfying grilled comfort classics.
 
-### The 18-Hour Slow Cold Drip
-Unlike flash-chilled coffee, our signature cold brew is extracted drop-by-drop over 18 hours using ice-cold mountain spring water. This prevents bitter tannins from extracting, leaving a velvety body with cocoa and blueberry sweetness.
+### Crisp, Tangy & Fresh
+Our Spiced Nepali Chatpate balances crunchy puffed rice, fresh diced tomatoes, crisp herbs, and lively seasoning, while our Grilled Club Sandwich arrives hot off the press with golden fries and house dipping sauce.
 
-### Garden Herb Infusions
-Our beverage team harvests fresh rosemary, lavender, and mint daily from the courtyard planters. By infusing these herbs at low temperatures, we capture bright essential oils without herbal bitterness.
-
-### The Perfect Glass
-Served in chilled crystal highballs over crystalline hand-carved ice, accompanied by dried blood orange wheels and aromatic botanical smoke.`,
+### Beat the Afternoon Warmth
+Paired with a tall frosted glass of Iced Lemon Mint Tea garnished with fresh mint leaves, it is one of the simplest ways to unwind with friends in Biratnagar.`,
         coverImage:
-          'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80',
-        author: 'Elena Rostova',
-        authorRole: 'Beverage Director',
-        category: 'Beverage Craft',
+          'https://res.cloudinary.com/m2ns7bvs/image/upload/v1795069463/classico-brew-and-grill/garden-lounge-day.jpg',
+        author: 'Classico Kitchen Team',
+        authorRole: 'Kitchen & Bar',
+        category: 'Kitchen & Drinks',
         readTime: '3 min read',
         sortOrder: 3,
         published: true,
@@ -457,66 +459,66 @@ Served in chilled crystal highballs over crystalline hand-carved ice, accompanie
   if (faqCount === 0) {
     const initialFaqItems = [
       {
-        question: 'Do I need a reservation to visit Classico Brew & Grill?',
+        question: 'Where is Classico Brew & Grill located in Biratnagar?',
         answer:
-          'Reservations are recommended for dinner and weekend brunch, especially in our Glass Conservatory and Hearth dining rooms. Walk-ins are always welcomed at our Espresso Bar, Garden Veranda, and counter seating.',
-        category: 'Reservations & Seating',
+          'We are located along Airport Road in Biratnagar-4, Morang (56613), right near the Biratnagar Airport area. You can open exact Google Maps directions from our Contact page or footer.',
+        category: 'Location & Hours',
         sortOrder: 1,
         published: true,
       },
       {
-        question: 'Can you accommodate dietary restrictions and food allergies?',
+        question: 'What are your daily opening hours?',
         answer:
-          'Absolutely. Our menu clearly marks Vegetarian, Vegan, and Gluten-Free selections. Please mention any allergies or dietary preferences to your server or note them in your table reservation booking.',
-        category: 'Dining & Kitchen',
+          'Classico Brew & Grill is open every day of the week from 7:30 AM to 10:00 PM—serving early morning coffee and breakfast through evening grill specials and dinner.',
+        category: 'Location & Hours',
         sortOrder: 2,
         published: true,
       },
       {
-        question: 'Where do you source your coffee beans?',
+        question: 'Do I need a reservation, or are walk-ins welcome?',
         answer:
-          'We directly partner with smallholder farms across Ethiopia, Colombia, and Guatemala. All beans are roasted in-house in small 5kg batches to ensure peak aroma and nuance.',
-        category: 'Roastery & Brews',
+          'Walk-in guests are always welcome at our Coffee House, Covered Garden Lounge, and Courtyard. For weekend evenings or larger groups on the Upper Mezzanine Deck, you can reserve online or call +977 982-7326578 / +977 970-9129167.',
+        category: 'Reservations & Seating',
         sortOrder: 3,
         published: true,
       },
       {
-        question: 'What wood do you use for your wood-fired grill?',
+        question: 'Is guest parking available on-site?',
         answer:
-          'We burn seasoned white oak and wild applewood. This imparts a balanced, subtly sweet aroma that accentuates prime meats, fresh seafood, and roasted hearth vegetables without overpowering them.',
-        category: 'Dining & Kitchen',
+          'Yes! We have both convenient motorbike parking out front along Airport Road and dedicated covered vehicle parking beside our Restro Garden.',
+        category: 'Location & Hours',
         sortOrder: 4,
         published: true,
       },
       {
-        question: 'Do you host private events, celebrations, or corporate gatherings?',
+        question: 'What kind of seating areas do you offer?',
         answer:
-          'Yes. Our Glass Conservatory and Mezzanine are available for private parties, tasting dinners, and celebrations. Contact events@classicobrewgrill.com or use our reservation form.',
-        category: 'Private Events',
+          'Guests can choose between our open-air Restro Garden Courtyard, our shaded Covered Garden Lounge with cushioned sofas, the elevated Upper Mezzanine Deck, or the indoor Coffee House & Bar counter.',
+        category: 'Reservations & Seating',
         sortOrder: 5,
         published: true,
       },
       {
-        question: 'What are your operating hours for coffee versus the grill?',
+        question: 'What food and drinks are Classico known for?',
         answer:
-          'Our Specialty Roastery & Espresso Bar opens early from 7:30 AM daily. Wood-Fired Hearth and Kitchen service begins at 11:30 AM for lunch and continues through late evening dinner service.',
-        category: 'General',
+          'We serve freshly pulled espresso, cappuccinos, and Americanos on our La Cimbali espresso machine alongside chilled iced teas, grilled sandwiches, momos, chatpate, pizzas, and evening specials like Mutton Cheese Finger, Chicken Khumbi, Stuffed Grill Paneer, and Devil Mojito.',
+        category: 'Food & Coffee',
         sortOrder: 6,
         published: true,
       },
       {
-        question: 'Is there parking available on-site?',
+        question: 'Do you offer takeaway, delivery, or group celebrations?',
         answer:
-          'We offer dedicated guest parking behind our heritage building along with bicycle stands in the front garden arbor.',
-        category: 'General',
+          'Yes, we provide dine-in, takeaway, and local delivery options, and we happily host birthdays, casual get-togethers, and small celebrations. Reach us at theclassico777@gmail.com or call +977 982-7326578.',
+        category: 'Events & Services',
         sortOrder: 7,
         published: true,
       },
       {
-        question: 'Can I purchase fresh coffee beans or merchandise to take home?',
+        question: 'How can I inquire about Bed & Breakfast availability?',
         answer:
-          'Yes, our whole bean coffees (roasted within the week), custom ceramic mugs, and brew gear are available for purchase at the front roastery counter.',
-        category: 'Roastery & Brews',
+          'For Bed & Breakfast room inquiries near Biratnagar Airport, please email us at theclassico777@gmail.com or call +977 982-7326578 / +977 970-9129167 directly.',
+        category: 'Events & Services',
         sortOrder: 8,
         published: true,
       },
@@ -532,49 +534,40 @@ Served in chilled crystal highballs over crystalline hand-carved ice, accompanie
   if (reviewsCount === 0) {
     const initialReviews = [
       {
-        authorName: 'Julian Montgomery',
-        authorRole: 'Food & Travel Critic',
+        authorName: 'Biratnagar Coffee Regular',
+        authorRole: 'Google Maps Review Highlight',
         rating: 5,
         comment:
-          'The dry-aged ribeye seared over white oak is phenomenal, but the surprise was their Geisha pour-over. A rare balance of culinary excellence and genuine warmth.',
+          'Warm and inviting atmosphere near the airport with great fresh coffee and well-prepared food. One of the best outdoor garden hangout spots in Biratnagar.',
         approved: true,
         published: true,
       },
       {
-        authorName: 'Sophia Chen',
-        authorRole: 'Local Architect & Coffee Enthusiast',
-        rating: 5,
+        authorName: 'Evening Garden Visitor',
+        authorRole: 'Google Maps Review Highlight',
+        rating: 4,
         comment:
-          'The glasshouse conservatory is easily the most atmospheric spot in town for a morning espresso and weekend brunch. The attention to natural light and greenery is inspiring.',
+          'Cool evening ambiance in the open courtyard and upper deck. Pleasant, attentive staff and fast service for coffee, sandwiches, and evening snacks.',
         approved: true,
         published: true,
       },
       {
-        authorName: 'David K. Sharma',
-        authorRole: 'Neighborhood Regular',
+        authorName: 'Airport Road Guest',
+        authorRole: 'Dine-In Patron',
         rating: 5,
         comment:
-          'Outstanding hospitality. The smoked salt caramel tart and botanical tonics are now weekly rituals for my family. The staff treats you like an old friend from day one.',
+          'Ideal place for morning espresso before a flight or catching up with friends over iced mint tea and spiced chatpate under the shaded pergola.',
         approved: true,
         published: true,
       },
       {
-        authorName: 'Claire & Thomas',
-        authorRole: 'Anniversary Dinner Guests',
-        rating: 5,
+        authorName: 'Weekend Group Table',
+        authorRole: 'Restro Garden Guest',
+        rating: 4,
         comment:
-          'Celebrated our anniversary by the hearth fire. Every course was flawless, and the staff made our night feel truly special. We will remember this evening for years.',
+          'Comfortable outdoor seating, friendly hospitality, and tasty grill specials. Really convenient parking and a relaxing vibe right on Airport Road.',
         approved: true,
         published: true,
-      },
-      {
-        authorName: 'Marcus B.',
-        authorRole: 'First-Time Visitor',
-        rating: 5,
-        comment:
-          'Visited for Sunday brunch. The brioche french toast and flat white were incredible. Fast service even during rush hour!',
-        approved: false,
-        published: false,
       },
     ];
 

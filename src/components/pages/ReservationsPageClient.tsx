@@ -72,7 +72,7 @@ export function ReservationsPageClient({
           guests,
           date,
           timeSlot,
-          seatingZone: selectedZone?.name || 'Botanical Conservatory',
+          seatingZone: selectedZone?.name || 'Restro Garden Courtyard',
           occasion,
           notes,
         }),
@@ -354,7 +354,7 @@ export function ReservationsPageClient({
                       required
                       value={fullName}
                       onChange={(e) => setFullName(e.target.value)}
-                      placeholder="Julian Mercer"
+                      placeholder="Aarav Shrestha"
                       className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-2.5 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                     />
                   </div>
@@ -371,7 +371,7 @@ export function ReservationsPageClient({
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="julian@example.com"
+                      placeholder="aarav@example.com"
                       className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-2.5 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                     />
                   </div>
@@ -388,7 +388,7 @@ export function ReservationsPageClient({
                       required
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+1 (503) 555-0188"
+                      placeholder="+977 980-0000000"
                       className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-2.5 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                     />
                   </div>

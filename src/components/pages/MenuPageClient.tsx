@@ -102,11 +102,11 @@ export function MenuPageClient({
   return (
     <>
       <PageHero
-        scriptLabel={pageSection?.scriptLabel || 'Seasonal Roasts & Open-Flame Kitchen'}
+        scriptLabel={pageSection?.scriptLabel || 'Coffee House & All-Day Kitchen'}
         title={pageSection?.title || 'Our Menu'}
         description={
           pageSection?.description ||
-          'Every dish and brew is crafted to order from published seasonal offerings.'
+          'Freshly pulled espresso, classic café bites, Nepali favorites, and evening grill specials prepared daily.'
         }
       />
 
@@ -153,7 +153,7 @@ export function MenuPageClient({
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search espresso, ribeye, truffle..."
+                placeholder="Search espresso, cappuccino, sandwich, chatpate, grill..."
                 aria-label="Search menu items"
                 className="w-full rounded-full border border-brand-mint/45 bg-brand-bg/70 py-2 pl-10 pr-9 text-sm text-brand-dark placeholder:text-brand-dark/45 focus:border-brand-teal focus:bg-white focus:outline-none"
               />

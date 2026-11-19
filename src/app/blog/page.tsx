@@ -9,9 +9,9 @@ export async function generateMetadata(): Promise<Metadata> {
   const settings = await getPublishedSiteSettings();
   const brandName = settings?.brandName || 'Classico Brew & Grill';
   return {
-    title: `Journal & Roastery Stories | ${brandName}`,
+    title: `Journal & Stories | ${brandName}`,
     description:
-      'Explore articles on artisanal coffee roasting, wood-fired hearth gastronomy, origin farms, and culinary craft.',
+      'Stories from Classico Brew & Grill on Airport Road, Biratnagar — morning espresso craft, Restro Garden evenings, and seasonal kitchen specials.',
   };
 }
 

@@ -223,7 +223,7 @@ export function ReviewsTab({ reviews, onMutate, busy }: ReviewsTabProps) {
                 onChange={(e) =>
                   setForm({ ...form, authorName: e.target.value })
                 }
-                placeholder="e.g. Julian Montgomery"
+                placeholder="e.g. Biratnagar Coffee Regular"
                 className="w-full rounded-xl border border-brand-mint/45 bg-brand-bg px-3.5 py-2 text-sm text-brand-dark focus:border-brand-teal focus:outline-none"
               />
             </div>

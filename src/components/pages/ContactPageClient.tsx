@@ -5,12 +5,12 @@ import { motion } from 'framer-motion';
 import {
   CheckCircle2,
   Clock,
+  Facebook,
   Instagram,
   Mail,
   MapPin,
   Phone,
   Send,
-  Share2,
 } from 'lucide-react';
 import { PageHero } from '@/components/ui/PageHero';
 import { Section } from '@/components/ui/Section';
@@ -116,36 +116,53 @@ export function ContactPageClient({
                     >
                       {settings.email}
                     </a>
-                    <p className="mt-0.5 text-xs text-brand-sage">
-                      Private Events: {settings.eventsEmail}
-                    </p>
+                    {settings.eventsEmail && settings.eventsEmail !== settings.email && (
+                      <p className="mt-0.5 text-xs text-brand-sage">
+                        Private Events: {settings.eventsEmail}
+                      </p>
+                    )}
                   </div>
                 </div>
               </div>
 
               <div className="border-t border-brand-mint/30 pt-5">
                 <p className="text-xs font-semibold uppercase tracking-wider text-brand-sage">
-                  Follow Our Journal
+                  Connect &amp; Directions
                 </p>
-                <div className="mt-3 flex gap-3">
-                  <a
-                    href={settings.instagramUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-brand-bg px-4 py-2 text-xs font-medium text-brand-dark transition-colors hover:border-brand-teal hover:text-brand-teal"
-                  >
-                    <Instagram className="h-3.5 w-3.5" />
-                    Instagram
-                  </a>
-                  <a
-                    href={settings.facebookUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-brand-bg px-4 py-2 text-xs font-medium text-brand-dark transition-colors hover:border-brand-teal hover:text-brand-teal"
-                  >
-                    <Share2 className="h-3.5 w-3.5" />
-                    Facebook
-                  </a>
+                <div className="mt-3 flex flex-wrap gap-2.5">
+                  {settings.facebookUrl && (
+                    <a
+                      href={settings.facebookUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-brand-bg px-4 py-2 text-xs font-medium text-brand-dark transition-colors hover:border-brand-teal hover:text-brand-teal"
+                    >
+                      <Facebook className="h-3.5 w-3.5" />
+                      Facebook
+                    </a>
+                  )}
+                  {settings.instagramUrl && (
+                    <a
+                      href={settings.instagramUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-brand-bg px-4 py-2 text-xs font-medium text-brand-dark transition-colors hover:border-brand-teal hover:text-brand-teal"
+                    >
+                      <Instagram className="h-3.5 w-3.5" />
+                      Instagram
+                    </a>
+                  )}
+                  {settings.mapsQueryUrl && (
+                    <a
+                      href={settings.mapsQueryUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-brand-mint/45 bg-brand-bg px-4 py-2 text-xs font-medium text-brand-dark transition-colors hover:border-brand-teal hover:text-brand-teal"
+                    >
+                      <MapPin className="h-3.5 w-3.5" />
+                      Google Maps
+                    </a>
+                  )}
                 </div>
               </div>
             </motion.div>
@@ -180,9 +197,9 @@ export function ContactPageClient({
               </div>
 
               <div className="mt-5 rounded-2xl bg-white/10 p-3.5 text-xs text-brand-mint-light/90">
-                <p>• Espresso &amp; Roastery Bar: {settings.roasteryHours}</p>
+                <p>• Coffee House &amp; Espresso Bar: {settings.roasteryHours}</p>
                 <p className="mt-1">
-                  • Open-Hearth Grill Kitchen: {settings.grillHours}
+                  • Restro Garden Grill &amp; Kitchen: {settings.grillHours}
                 </p>
               </div>
             </motion.div>
@@ -258,7 +275,7 @@ export function ContactPageClient({
                         onChange={(e) =>
                           setFormState({ ...formState, name: e.target.value })
                         }
-                        placeholder="Clara Bennett"
+                        placeholder="Sita Adhikari"
                         className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-3 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                       />
                     </div>
@@ -278,7 +295,7 @@ export function ContactPageClient({
                         onChange={(e) =>
                           setFormState({ ...formState, email: e.target.value })
                         }
-                        placeholder="clara@example.com"
+                        placeholder="sita@example.com"
                         className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-3 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                       />
                     </div>
@@ -299,7 +316,7 @@ export function ContactPageClient({
                         onChange={(e) =>
                           setFormState({ ...formState, phone: e.target.value })
                         }
-                        placeholder="+1 (503) 555-0140"
+                        placeholder="+977 980-0000000"
                         className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-3 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                       />
                     </div>
@@ -320,9 +337,9 @@ export function ContactPageClient({
                         className="mt-1.5 w-full rounded-xl border border-brand-mint/45 bg-brand-bg/50 px-4 py-3 text-sm text-brand-dark focus:border-brand-teal focus:bg-white focus:outline-none"
                       >
                         <option>General Inquiry</option>
-                        <option>Private Dining &amp; Events</option>
-                        <option>Coffee Wholesale &amp; Cupping</option>
-                        <option>Dietary &amp; Menu Questions</option>
+                        <option>Private Gatherings &amp; Events</option>
+                        <option>Bed &amp; Breakfast Inquiry</option>
+                        <option>Menu &amp; Catering Questions</option>
                       </select>
                     </div>
                   </div>

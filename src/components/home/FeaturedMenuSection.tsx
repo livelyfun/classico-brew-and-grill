@@ -38,7 +38,7 @@ export function FeaturedMenuSection({
       <SectionHeading
         scriptLabel="Curated Highlights"
         title="Taste the Classico Table"
-        description="Preview our published kitchen and roastery favorites, thoughtfully prepared daily from seasonal harvests and roasted to order."
+        description="Preview our signature espressos, freshly grilled sandwiches, Nepali snacks, and refreshing drinks prepared daily on Airport Road."
       />
 
       <div className="mt-10 flex flex-wrap items-center justify-center gap-2">
